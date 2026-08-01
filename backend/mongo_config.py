@@ -11,7 +11,7 @@ except ImportError:
 
 MONGODB_URI = os.getenv(
     "MONGODB_URI", 
-    "mongodb+srv://patelautomobile:patelautomobile123@cluster0.mongodb.net/patelautomobile?retryWrites=true&w=majority"
+    "mongodb+srv://rockpatel6732_db_user:FYwO0vlU8Vehe3DM@cluster0.zh8vtin.mongodb.net/patel_automobiles_db?retryWrites=true&w=majority&appName=Cluster0"
 )
 
 def get_db():
