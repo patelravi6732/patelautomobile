@@ -31,7 +31,7 @@ export default function InventoryPage() {
     category: 'General',
     price: '',
     current_stock: '',
-    min_stock_alert: 5
+    min_stock_alert: ''
   });
 
   const categories = [
@@ -63,7 +63,7 @@ export default function InventoryPage() {
       category: 'General',
       price: '',
       current_stock: '',
-      min_stock_alert: 5
+      min_stock_alert: ''
     });
     setShowAddModal(true);
   };
@@ -431,7 +431,7 @@ export default function InventoryPage() {
                   type="number"
                   required
                   value={formData.min_stock_alert}
-                  onChange={(e) => setFormData({ ...formData, min_stock_alert: parseInt(e.target.value) || 5 })}
+                  onChange={(e) => setFormData({ ...formData, min_stock_alert: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-mono focus:outline-none"
                 />
               </div>

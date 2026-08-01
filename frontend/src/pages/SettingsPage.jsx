@@ -23,7 +23,7 @@ export default function SettingsPage() {
     timing_text: 'Mon - Sat: 09:00 AM - 08:30 PM, Sun: 09:00 AM - 02:00 PM',
     mechanics_list: 'Vijay Owner, Patel Owner, Ramesh Mechanic, Suresh Technician',
     default_labour_charge: 300.00,
-    default_min_stock: 5,
+    default_min_stock: '',
     upi_qr_code: '/upi_qr.jpg',
     upi_id: 'pritpatel9397@oksbi',
     upi_payee_name: 'Prit Patel'
@@ -152,7 +152,7 @@ export default function SettingsPage() {
         safety_message: garageInfo.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️',
         mechanics_list: garageInfo.mechanics_list || 'Vijay Owner, Patel Owner, Ramesh Mechanic, Suresh Technician',
         default_labour_charge: garageInfo.default_labour_charge || 300.00,
-        default_min_stock: garageInfo.default_min_stock || 5,
+        default_min_stock: garageInfo.default_min_stock !== undefined ? garageInfo.default_min_stock : '',
         upi_qr_code: garageInfo.upi_qr_code || '/upi_qr.jpg',
         upi_id: garageInfo.upi_id || 'pritpatel9397@oksbi',
         upi_payee_name: garageInfo.upi_payee_name || 'Prit Patel'
@@ -673,7 +673,7 @@ export default function SettingsPage() {
                   type="number"
                   required
                   value={formData.default_min_stock}
-                  onChange={(e) => setFormData({ ...formData, default_min_stock: parseInt(e.target.value) || 5 })}
+                  onChange={(e) => setFormData({ ...formData, default_min_stock: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-mono focus:outline-none"
                 />
               </div>
