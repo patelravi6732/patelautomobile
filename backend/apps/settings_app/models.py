@@ -10,7 +10,7 @@ class GarageSettings(models.Model):
     email = models.EmailField(default="contact@patelautomobiles.com")
     timing_text = models.TextField(default="Mon - Sat: 09:00 AM - 08:30 PM, Sun: 09:00 AM - 02:00 PM")
     safety_message = models.TextField(default="Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️")
-    mechanics_list = models.TextField(default="Patel Owner, Ramesh Mechanic, Suresh Technician")
+    mechanics_list = models.TextField(default="Vijay Owner, Patel Owner, Ramesh Mechanic, Suresh Technician")
     default_labour_charge = models.DecimalField(max_digits=10, decimal_places=2, default=300.00)
     default_min_stock = models.IntegerField(default=5)
     upi_qr_code = models.TextField(blank=True, null=True, default="/upi_qr.jpg")

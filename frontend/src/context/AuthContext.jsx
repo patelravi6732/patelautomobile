@@ -9,7 +9,8 @@ export const DEFAULT_GARAGE_INFO = {
   email: 'patelautomobile9397@gmail.com',
   logo: '/logo.png',
   upi_id: 'pritpatel9397@oksbi',
-  upi_payee_name: 'Prit Patel'
+  upi_payee_name: 'Prit Patel',
+  mechanics_list: 'Vijay Owner, Patel Owner, Ramesh Mechanic, Suresh Technician'
 };
 
 const AuthContext = createContext();

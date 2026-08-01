@@ -49,7 +49,7 @@ def seed_clean():
         whatsapp_number='+91 81403 71414',
         email='contact@patelautomobiles.com',
         timing_text='Mon - Sat: 09:00 AM - 08:30 PM, Sun: 09:00 AM - 02:00 PM',
-        mechanics_list='Patel Owner, Ramesh Mechanic, Suresh Technician',
+        mechanics_list='Vijay Owner, Patel Owner, Ramesh Mechanic, Suresh Technician',
         default_labour_charge=300.00,
         default_min_stock=5
     )
