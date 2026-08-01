@@ -86,9 +86,18 @@ export default function WorkshopPage() {
 
     const allMap = new Map();
     [...backendJobs, ...localJobs, ...cloudJobs].forEach(j => {
-      const uniqueKey = j.id || `${j.vehicle_number}_${j.created_at}`;
-      if (!allMap.has(uniqueKey)) {
-        allMap.set(uniqueKey, j);
+      if (j && typeof j === 'object') {
+        const uniqueKey = j.id || `${j.vehicle_number || 'UNKNOWN'}_${j.created_at || Date.now()}`;
+        if (!allMap.has(uniqueKey)) {
+          const sanitizedJob = {
+            ...j,
+            parts: Array.isArray(j.parts) ? j.parts : [],
+            parts_total: parseFloat(j.parts_total || 0),
+            labour_charge: parseFloat(j.labour_charge || 0),
+            status: j.status || 'IN_PROGRESS'
+          };
+          allMap.set(uniqueKey, sanitizedJob);
+        }
       }
     });
 
@@ -249,8 +258,8 @@ export default function WorkshopPage() {
     fetchData();
   };
 
-  const activeJobs = jobs.filter(j => j.status === 'IN_PROGRESS');
-  const finishedJobs = jobs.filter(j => j.status === 'FINISHED' || j.status === 'CANCELLED');
+  const activeJobs = jobs.filter(j => j && j.status === 'IN_PROGRESS');
+  const finishedJobs = jobs.filter(j => j && (j.status === 'FINISHED' || j.status === 'CANCELLED'));
 
   return (
     <div className="space-y-8">
@@ -297,7 +306,8 @@ export default function WorkshopPage() {
           /* ACTIVE BIKE CARDS GRID */
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {activeJobs.map((job) => {
-              const hasStagedParts = job.parts.some(p => p.status === 'STAGED');
+              const partsList = Array.isArray(job.parts) ? job.parts : [];
+              const hasStagedParts = partsList.some(p => p && p.status === 'STAGED');
               const rawLabour = labourInputs[job.id] !== undefined
                 ? labourInputs[job.id]
                 : (job.labour_charge && parseFloat(job.labour_charge) > 0 ? formatMoney(job.labour_charge) : '');
@@ -380,7 +390,7 @@ export default function WorkshopPage() {
                     {/* CURRENT PARTS LIST */}
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Current Parts ({job.parts.length})</span>
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Current Parts ({partsList.length})</span>
                         {hasStagedParts && (
                           <span className="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
                             Parts Staged (Inventory Stock Intact)
@@ -388,12 +398,12 @@ export default function WorkshopPage() {
                         )}
                       </div>
 
-                      {job.parts.length === 0 ? (
+                      {partsList.length === 0 ? (
                         <p className="text-xs text-slate-400 py-2 italic">No spare parts added yet.</p>
                       ) : (
                         <div className="space-y-2 max-h-48 overflow-y-auto pr-1">
-                          {job.parts.map((p) => {
-                            const cleanName = p.part_name.split('#')[0].trim();
+                          {partsList.map((p) => {
+                            const cleanName = (p.part_name || '').split('#')[0].trim();
                             return (
                               <div key={p.id} className="p-3 rounded-2xl bg-slate-50 border border-slate-200/60 flex items-center justify-between text-xs hover:border-slate-300 transition-colors">
                                 <div className="flex items-center gap-2.5 min-w-0 pr-2">
