@@ -38,46 +38,6 @@ import RecycleBinPage from './pages/RecycleBinPage';
 // ================================================================
 export const SECRET_ADMIN_LOGIN_PATH = "/patel-admin-portal";
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {
-    console.error('ErrorBoundary caught an error:', error, info);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="min-h-screen bg-slate-900 flex items-center justify-center p-6 text-white text-center">
-          <div className="max-w-md bg-slate-800 p-8 rounded-3xl border border-slate-700 space-y-4">
-            <h2 className="text-xl font-bold text-amber-400 font-poppins">Patel Automobiles Admin Portal</h2>
-            <p className="text-xs text-slate-300">
-              Page refreshed to maintain active session. Click below to continue.
-            </p>
-            <button
-              onClick={() => {
-                this.setState({ hasError: false });
-                window.location.reload();
-              }}
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-lg transition-all"
-            >
-              Reload Admin Dashboard
-            </button>
-          </div>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
 // Protected Route Guard (Admin Only)
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -88,9 +48,8 @@ const ProtectedRoute = ({ children }) => {
 
 export default function App() {
   return (
-    <ErrorBoundary>
-      <AuthProvider>
-        <ScrollToTop />
+    <AuthProvider>
+      <ScrollToTop />
         <Routes>
           
           {/* PUBLIC WEBSITE ROUTES */}
@@ -162,6 +121,5 @@ export default function App() {
 
       </Routes>
     </AuthProvider>
-    </ErrorBoundary>
   );
 }
