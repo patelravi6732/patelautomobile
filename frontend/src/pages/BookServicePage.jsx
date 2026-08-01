@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Clock, Bike, User, Phone, AlertCircle, CheckCircle2, Wrench, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
 import API from '../services/api';
+import { pushCloudBooking } from '../utils/cloudSync';
 
 export default function BookServicePage() {
   const [formData, setFormData] = useState({
@@ -35,7 +36,6 @@ export default function BookServicePage() {
     '04:00 PM - 05:00 PM',
     '06:00 PM - 07:00 PM'
   ];
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const cleanPhone = (formData.mobile_number || '').replace(/\D/g, '');
@@ -45,12 +45,23 @@ export default function BookServicePage() {
     }
     setLoading(true);
     setError(null);
+
+    const newBookingObj = {
+      ...formData,
+      id: Date.now(),
+      created_at: new Date().toISOString(),
+      status: 'PENDING'
+    };
+
+    // Push to global cloud sync buffer so Admin receives booking from ANY device
+    pushCloudBooking(newBookingObj).catch(console.warn);
+
     try {
       await API.post('/public/bookings/', formData);
     } catch (err) {
       console.warn('Backend API offline/unreachable on static host, saving booking locally:', err);
       const existing = JSON.parse(localStorage.getItem('local_bookings') || '[]');
-      existing.push({ ...formData, id: Date.now(), created_at: new Date().toISOString(), status: 'PENDING' });
+      existing.push(newBookingObj);
       localStorage.setItem('local_bookings', JSON.stringify(existing));
     } finally {
       setLoading(false);

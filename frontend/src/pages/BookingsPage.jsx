@@ -5,6 +5,7 @@ import API from '../services/api';
 import AdminPasswordModal from '../components/AdminPasswordModal';
 import { useAuth } from '../context/AuthContext';
 import { generateBookingNotificationMessage } from '../utils/aiMessageGenerator';
+import { fetchCloudBookings } from '../utils/cloudSync';
 
 const DEFAULT_BOOKING_DATE = new Date();
 
@@ -42,16 +43,33 @@ export default function BookingsPage() {
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
-
   const fetchBookings = async () => {
+    setLoading(true);
+    let backendBookings = [];
     try {
       const res = await API.get('/bookings/');
-      setBookings(res.data);
+      backendBookings = res.data || [];
     } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
+      console.warn('Backend API offline or unreachable:', err);
     }
+
+    const localBookings = JSON.parse(localStorage.getItem('local_bookings') || '[]');
+    const cloudBookings = await fetchCloudBookings();
+
+    const allBookingsMap = new Map();
+    [...backendBookings, ...localBookings, ...cloudBookings].forEach(b => {
+      const uniqueKey = b.id || `${b.vehicle_number}_${b.preferred_date}`;
+      if (!allBookingsMap.has(uniqueKey)) {
+        allBookingsMap.set(uniqueKey, b);
+      }
+    });
+
+    const mergedList = Array.from(allBookingsMap.values()).sort(
+      (a, b) => new Date(b.created_at || Date.now()) - new Date(a.created_at || Date.now())
+    );
+
+    setBookings(mergedList);
+    setLoading(false);
   };
 
   useEffect(() => {
