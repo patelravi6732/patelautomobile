@@ -32,6 +32,31 @@ from .serializers import (
     MechanicSalaryPaymentSerializer
 )
 from .permissions import IsAdminUserRole, IsStaffOrAdminUserRole
+from django.contrib.auth.hashers import make_password, check_password
+
+def sync_admin_profile_to_mongodb(admin_profile, plain_password=None):
+    try:
+        from mongo_config import get_db as get_mongo_db
+        db = get_mongo_db()
+        if db is not None:
+            col = db['admin_profiles']
+            user_obj = admin_profile.user
+            pw_hash = user_obj.password if (user_obj and user_obj.password) else (make_password(plain_password) if plain_password else '')
+            doc = {
+                'id': str(admin_profile.id),
+                'user_name': admin_profile.user_name,
+                'username': admin_profile.username,
+                'phone': admin_profile.phone,
+                'email': admin_profile.email,
+                'date_of_birth': str(admin_profile.date_of_birth) if admin_profile.date_of_birth else '',
+                'profile_photo': admin_profile.profile_photo,
+                'password_hash': pw_hash,
+                'updated_at': timezone.now().isoformat()
+            }
+            col.update_one({'username': admin_profile.username}, {'$set': doc}, upsert=True)
+            print(f"✅ Synced admin '{admin_profile.username}' with PBKDF2 hashed password to MongoDB Atlas!")
+    except Exception as e:
+        print(f"MongoDB admin sync warning: {e}")
 
 def get_progressive_lockout_info(tier):
     """
@@ -1749,6 +1774,7 @@ class AdminProfileViewSet(viewsets.ModelViewSet):
             )
 
         log_admin_action(admin_name, 'CREATE_ADMIN', f"Created new Admin account for '{user_name}' ({username})")
+        sync_admin_profile_to_mongodb(profile, password)
         return Response(AdminProfileSerializer(profile).data, status=status.HTTP_201_CREATED)
 
     def update(self, request, *args, **kwargs):
@@ -1788,6 +1814,7 @@ class AdminProfileViewSet(viewsets.ModelViewSet):
             profile.user.save()
 
         log_admin_action(admin_name, 'UPDATE_ADMIN_PROFILE', f"Updated Admin profile for '{user_name}' ({profile.username})")
+        sync_admin_profile_to_mongodb(profile, new_pass)
         return Response(AdminProfileSerializer(profile).data)
 
     @action(detail=True, methods=['post'])
