@@ -1470,7 +1470,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         monthly_records = Attendance.objects.filter(date__year=year, date__month=month)
         monthly_salaries = MechanicSalaryPayment.objects.filter(payment_date__year=year, payment_date__month=month)
         
-        mechanics_roster = ['Patel Owner', 'Ramesh Mechanic', 'Suresh Technician']
+        mechanics_roster = ['Unassigned', 'Amitbhai Mechanic', 'Vishalbhai Mechanic', 'Manojbhai Mechanic', 'Patel Owner', 'Ramesh Mechanic', 'Suresh Technician']
         try:
             settings_obj = GarageSettings.objects.first()
             if settings_obj and settings_obj.mechanics_list:
@@ -1540,7 +1540,7 @@ class AttendanceViewSet(viewsets.ModelViewSet):
         num_days = calendar.monthrange(year, month)[1]
         monthly_records = Attendance.objects.filter(date__year=year, date__month=month)
 
-        mechanics_roster = ['Patel Owner', 'Ramesh Mechanic', 'Suresh Technician']
+        mechanics_roster = ['Unassigned', 'Amitbhai Mechanic', 'Vishalbhai Mechanic', 'Manojbhai Mechanic', 'Patel Owner', 'Ramesh Mechanic', 'Suresh Technician']
         try:
             settings_obj = GarageSettings.objects.first()
             if settings_obj and settings_obj.mechanics_list:
