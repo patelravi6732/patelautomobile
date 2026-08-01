@@ -4,6 +4,7 @@ import API from '../services/api';
 import AdminPasswordModal from '../components/AdminPasswordModal';
 import { useAuth } from '../context/AuthContext';
 import { generateInquiryReplyMessage } from '../utils/aiMessageGenerator';
+import { fetchCloudMessages } from '../utils/cloudSync';
 
 export default function MessagesPage() {
   const { garageInfo } = useAuth();
@@ -22,28 +23,44 @@ export default function MessagesPage() {
 
   const fetchMessages = async () => {
     setLoading(true);
+    let backendMsgs = [];
     try {
       const res = await API.get('/messages/');
-      setMessages(res.data);
-
-      // Initialize draft texts for Pending messages
-      const initialDrafts = {};
-      const initialLangs = {};
-      const initialVars = {};
-      res.data.forEach(m => {
-        const lang = 'GUJARATI';
-        initialLangs[m.id] = lang;
-        initialVars[m.id] = 0;
-        initialDrafts[m.id] = m.reply_text || m.ai_draft_reply || generateInquiryReplyMessage(m, lang, 0, garagePhone);
-      });
-      setDraftTexts(initialDrafts);
-      setDraftLangs(initialLangs);
-      setVariationIndices(initialVars);
+      backendMsgs = res.data || [];
     } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
+      console.warn('Backend API offline or error:', err);
     }
+
+    const localMsgs = JSON.parse(localStorage.getItem('local_messages') || '[]');
+    const cloudMsgs = await fetchCloudMessages();
+
+    const allMap = new Map();
+    [...backendMsgs, ...localMsgs, ...cloudMsgs].forEach(m => {
+      const uniqueKey = m.id || `${m.phone}_${m.created_at}`;
+      if (!allMap.has(uniqueKey)) {
+        allMap.set(uniqueKey, m);
+      }
+    });
+
+    const mergedMsgs = Array.from(allMap.values()).sort(
+      (a, b) => new Date(b.created_at || Date.now()) - new Date(a.created_at || Date.now())
+    );
+
+    setMessages(mergedMsgs);
+
+    const initialDrafts = {};
+    const initialLangs = {};
+    const initialVars = {};
+    mergedMsgs.forEach(m => {
+      const lang = 'GUJARATI';
+      initialLangs[m.id] = lang;
+      initialVars[m.id] = 0;
+      initialDrafts[m.id] = m.reply_text || m.ai_draft_reply || generateInquiryReplyMessage(m, lang, 0, garagePhone);
+    });
+    setDraftTexts(initialDrafts);
+    setDraftLangs(initialLangs);
+    setVariationIndices(initialVars);
+    setLoading(false);
   };
 
   useEffect(() => {

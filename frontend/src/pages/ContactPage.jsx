@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Sparkles, MessageSquare
 import { useAuth } from '../context/AuthContext';
 
 import API from '../services/api';
+import { pushCloudMessage } from '../utils/cloudSync';
 
 export default function ContactPage() {
   const { garageInfo } = useAuth();
@@ -25,12 +26,15 @@ export default function ContactPage() {
     }
     setLoading(true);
     setError(null);
+    const newMsgObj = { ...formData, id: Date.now(), created_at: new Date().toISOString() };
+    pushCloudMessage(newMsgObj).catch(console.warn);
+
     try {
       await API.post('/public/contact/', formData);
     } catch (err) {
       console.warn('Backend API offline on static host, saving inquiry locally:', err);
       const existing = JSON.parse(localStorage.getItem('local_messages') || '[]');
-      existing.push({ ...formData, id: Date.now(), created_at: new Date().toISOString() });
+      existing.push(newMsgObj);
       localStorage.setItem('local_messages', JSON.stringify(existing));
     } finally {
       setLoading(false);

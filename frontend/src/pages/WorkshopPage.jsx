@@ -4,6 +4,7 @@ import {
   IndianRupee, Package, Bike, User, Phone, Check, Receipt, UserCheck, Users, Lock, Search, ChevronDown, Edit2, Tag
 } from 'lucide-react';
 import API from '../services/api';
+import { fetchCloudJobs } from '../utils/cloudSync';
 import { useAuth } from '../context/AuthContext';
 import AdminPasswordModal from '../components/AdminPasswordModal';
 
@@ -66,18 +67,38 @@ export default function WorkshopPage() {
   }, [garageInfo]);
 
   const fetchData = async () => {
+    setLoading(true);
+    let backendJobs = [];
+    let invData = [];
     try {
       const [jobsRes, invRes] = await Promise.all([
         API.get('/workshop/'),
         API.get('/inventory/')
       ]);
-      setJobs(jobsRes.data);
-      setInventory(invRes.data);
+      backendJobs = jobsRes.data || [];
+      invData = invRes.data || [];
     } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
+      console.warn('Backend API offline or unreachable:', err);
     }
+
+    const localJobs = JSON.parse(localStorage.getItem('workshop_jobs') || '[]');
+    const cloudJobs = await fetchCloudJobs();
+
+    const allMap = new Map();
+    [...backendJobs, ...localJobs, ...cloudJobs].forEach(j => {
+      const uniqueKey = j.id || `${j.vehicle_number}_${j.created_at}`;
+      if (!allMap.has(uniqueKey)) {
+        allMap.set(uniqueKey, j);
+      }
+    });
+
+    const mergedJobs = Array.from(allMap.values()).sort(
+      (a, b) => new Date(b.created_at || Date.now()) - new Date(a.created_at || Date.now())
+    );
+
+    setJobs(mergedJobs);
+    setInventory(invData);
+    setLoading(false);
   };
 
   useEffect(() => {

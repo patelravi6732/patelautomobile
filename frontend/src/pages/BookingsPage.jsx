@@ -5,7 +5,7 @@ import API from '../services/api';
 import AdminPasswordModal from '../components/AdminPasswordModal';
 import { useAuth } from '../context/AuthContext';
 import { generateBookingNotificationMessage } from '../utils/aiMessageGenerator';
-import { fetchCloudBookings, updateCloudBookingStatus } from '../utils/cloudSync';
+import { fetchCloudBookings, updateCloudBookingStatus, pushCloudJob } from '../utils/cloudSync';
 
 const DEFAULT_BOOKING_DATE = new Date();
 
@@ -196,13 +196,40 @@ export default function BookingsPage() {
     }
   };
 
-  const handleConvert = async (id) => {
+  const handleConvert = async (booking) => {
+    const bookingObj = typeof booking === 'object' ? booking : bookings.find(b => b.id === booking);
+    if (!bookingObj) return;
+
+    const newJobCard = {
+      id: Date.now(),
+      customer_name: bookingObj.customer_name,
+      mobile_number: bookingObj.mobile_number,
+      vehicle_number: bookingObj.vehicle_number,
+      bike_model: bookingObj.bike_model || 'Commuter Bike',
+      complaint: bookingObj.complaint || 'General Service & Repair',
+      assigned_mechanic: 'Vijay Owner',
+      labour_charge: 300.00,
+      parts_total: 0.00,
+      live_total: 300.00,
+      status: 'IN_PROGRESS',
+      created_at: new Date().toISOString()
+    };
+
+    pushCloudJob(newJobCard).catch(console.warn);
+
+    const existingJobs = JSON.parse(localStorage.getItem('workshop_jobs') || '[]');
+    existingJobs.push(newJobCard);
+    localStorage.setItem('workshop_jobs', JSON.stringify(existingJobs));
+
+    updateCloudBookingStatus(bookingObj.id, 'ACCEPTED').catch(console.warn);
+
     try {
-      await API.post(`/bookings/${id}/convert_to_service/`);
-      alert('Successfully converted to active Workshop Service Job!');
-      navigate('/app/workshop');
+      await API.post(`/bookings/${bookingObj.id}/convert_to_service/`);
     } catch (err) {
-      alert('Failed to convert booking to service job');
+      console.warn('Backend API offline or static host fallback for convert:', err);
+    } finally {
+      alert('Successfully converted to active Workshop Job Card!');
+      navigate('/app/workshop');
     }
   };
 
