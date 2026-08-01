@@ -115,15 +115,7 @@ export default function BookServicePage() {
                 <span className="font-bold text-emerald-400">{formData.preferred_date} ({formData.preferred_time})</span>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
-              <a
-                href={`https://wa.me/918140371414?text=${encodeURIComponent(`Hello Patel Automobiles, I have submitted a service booking for my bike ${formData.vehicle_number} (${formData.bike_model}).\n• Name: ${formData.customer_name}\n• Mobile: ${formData.mobile_number}\n• Preferred Date: ${formData.preferred_date} (${formData.preferred_time})`)}`}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-600/30 transition-all hover:scale-105"
-              >
-                Send Confirmation on WhatsApp (+91 81403 71414)
-              </a>
+            <div className="flex justify-center pt-2">
               <button
                 onClick={() => {
                   setSuccess(false);
@@ -137,7 +129,7 @@ export default function BookServicePage() {
                     preferred_time: '10:00 AM'
                   });
                 }}
-                className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-md transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-8 py-3.5 rounded-xl shadow-lg shadow-blue-600/30 transition-all hover:scale-105"
               >
                 Book Another Service <ArrowRight className="w-4 h-4" />
               </button>
