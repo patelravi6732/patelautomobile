@@ -47,14 +47,19 @@ const ProtectedRoute = ({ children }) => {
 };
 
 export default function App() {
+  const isDedicatedAdminDomain = typeof window !== 'undefined' && (
+    window.location.hostname.includes('patelautomobilevk') || 
+    window.location.hostname.includes('admin')
+  );
+
   return (
     <AuthProvider>
       <ScrollToTop />
         <Routes>
           
           {/* PUBLIC WEBSITE ROUTES */}
-          <Route path="/" element={<PublicLayout />}>
-            <Route index element={<HomePage />} />
+          <Route path="/" element={isDedicatedAdminDomain ? <Navigate to="/patel-admin-portal" replace /> : <PublicLayout />}>
+            <Route index element={isDedicatedAdminDomain ? <Navigate to="/patel-admin-portal" replace /> : <HomePage />} />
             <Route path="about" element={<AboutPage />} />
             <Route path="services" element={<ServicesPage />} />
             <Route path="contact" element={<ContactPage />} />
