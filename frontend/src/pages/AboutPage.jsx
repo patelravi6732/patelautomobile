@@ -74,19 +74,19 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* MECHANIC PHOTO & LOGO DISPLAY CARDS WITH 3D TILT */}
-          <div className="scroll-reveal-right flex flex-col sm:flex-row lg:flex-col gap-6 justify-center items-center">
-            <div className="card-3d w-full max-w-sm bg-slate-900 p-5 rounded-3xl border border-slate-800 shadow-2xl space-y-3 text-center overflow-hidden">
-              <div className="h-52 w-full mx-auto rounded-2xl overflow-hidden border-2 border-amber-400/40 shadow-xl bg-slate-950">
+          {/* LOGO IMAGE DISPLAY CARD WITH 3D TILT */}
+          <div className="scroll-reveal-right flex justify-center items-center">
+            <div className="card-3d w-full max-w-md bg-slate-900 p-6 rounded-3xl border border-slate-800 shadow-2xl space-y-4 text-center">
+              <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden border-2 border-amber-400/40 shadow-xl bg-slate-950">
                 <img
-                  src="/mechanic_tyres.jpg"
-                  alt="Patel Automobiles Master Mechanic Sitting on Tyres"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                  src={garageInfo?.logo || '/patel_automobiles_logo.jpg'}
+                  alt="Patel Automobiles Logo"
+                  className="w-full h-full object-cover"
                 />
               </div>
               <div>
-                <h3 className="text-base font-bold text-white font-poppins">Master Two-Wheeler Mechanic</h3>
-                <p className="text-xs text-amber-400 font-medium mt-0.5">33+ Years Experience • Dandi, Valsad</p>
+                <h3 className="text-lg font-bold text-white font-poppins">Patel Automobiles</h3>
+                <p className="text-xs text-amber-400 font-medium mt-0.5">Dandi, Valsad, Gujarat</p>
               </div>
             </div>
           </div>

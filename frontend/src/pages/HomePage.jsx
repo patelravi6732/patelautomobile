@@ -92,38 +92,22 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Visual Hero Card with 3D Float & Mechanic Avatar */}
+            {/* Visual Hero Card with 3D Float */}
             <div className="lg:col-span-5 scroll-reveal-right">
-              <div className="card-3d relative rounded-3xl bg-slate-900/90 border border-slate-700/80 p-6 sm:p-8 shadow-2xl space-y-6 backdrop-blur-md overflow-hidden">
-                
-                {/* Mechanic Photo Banner */}
-                <div className="relative h-48 rounded-2xl overflow-hidden border border-slate-700/60 shadow-lg">
-                  <img
-                    src="/mechanic_tyres.jpg"
-                    alt="Patel Automobiles Two-Wheeler Specialist Mechanic"
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-                    <span className="text-xs font-black text-amber-400 font-poppins uppercase tracking-wider bg-slate-950/80 px-2.5 py-1 rounded-lg border border-amber-400/30 backdrop-blur-xs">
-                      Master Workshop Mechanic
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse backdrop-blur-xs">
-                      Bay Open
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between border-b border-slate-700/80 pb-3">
+              <div className="card-3d relative rounded-3xl bg-slate-900/90 border border-slate-700/80 p-8 shadow-2xl space-y-6 backdrop-blur-md">
+                <div className="flex items-center justify-between border-b border-slate-700 pb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center border border-blue-500/30">
-                      <Settings className="w-5 h-5 animate-spin-slow" />
+                    <div className="w-12 h-12 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center border border-blue-500/30">
+                      <Settings className="w-6 h-6 animate-spin-slow" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-white text-sm font-poppins">Patel Automobiles</h3>
-                      <p className="text-[11px] text-slate-400">Near Dandi Pond, Dandi, Valsad</p>
+                      <h3 className="font-bold text-white text-base font-poppins">Patel Automobiles</h3>
+                      <p className="text-xs text-slate-400">Near Dandi Pond, Dandi, Valsad</p>
                     </div>
                   </div>
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">
+                    Open Today
+                  </span>
                 </div>
 
                 <div className="space-y-3">
