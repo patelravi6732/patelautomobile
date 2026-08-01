@@ -82,10 +82,9 @@ export default function VehicleHistoryPage() {
                   <input
                     type="text"
                     required
-                    placeholder="Enter Vehicle Reg. No."
                     value={vehicleNumber}
                     onChange={(e) => setVehicleNumber(e.target.value.toUpperCase())}
-                    className="w-full text-base font-black text-slate-900 tracking-wider uppercase focus:outline-none placeholder:text-slate-400 font-mono placeholder:font-normal placeholder:normal-case placeholder:text-xs"
+                    className="w-full text-base font-black text-slate-900 tracking-wider uppercase focus:outline-none font-mono"
                   />
                 </div>
               </div>
@@ -102,10 +101,11 @@ export default function VehicleHistoryPage() {
                   type="tel"
                   required
                   maxLength={10}
-                  placeholder="10-Digit Registered Mobile No."
+                  minLength={10}
+                  pattern="[0-9]{10}"
                   value={mobileNumber}
-                  onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, ''))}
-                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-900 focus:outline-none focus:border-amber-500 font-mono placeholder:text-slate-400 placeholder:font-normal"
+                  onChange={(e) => setMobileNumber(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                  className="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-bold text-slate-900 focus:outline-none focus:border-amber-500 font-mono"
                 />
               </div>
             </div>

@@ -381,7 +381,6 @@ export default function InventoryPage() {
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Activa 6G Brake Shoe"
                   value={formData.part_name}
                   onChange={(e) => setFormData({ ...formData, part_name: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-500/20"
@@ -408,7 +407,6 @@ export default function InventoryPage() {
                     type="number"
                     step="0.01"
                     required
-                    placeholder="250.00"
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-mono font-bold focus:outline-none"
@@ -420,7 +418,6 @@ export default function InventoryPage() {
                   <input
                     type="number"
                     required
-                    placeholder="10"
                     value={formData.current_stock}
                     onChange={(e) => setFormData({ ...formData, current_stock: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-mono font-bold focus:outline-none"

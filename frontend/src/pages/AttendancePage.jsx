@@ -498,7 +498,6 @@ export default function AttendancePage() {
                   <input
                     type="number"
                     required
-                    placeholder="e.g. 5000"
                     value={salaryForm.amount}
                     onChange={(e) => setSalaryForm({ ...salaryForm, amount: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-slate-900 focus:outline-none"

@@ -338,8 +338,7 @@ export default function WorkshopPage() {
                               const num = parseFloat(e.target.value.replace(/[^0-9.]/g, '')) || 0;
                               handleSilentUpdateLabourCharge(job.id, num);
                             }}
-                            className="w-24 px-3 py-1.5 bg-slate-800 border border-slate-700 text-white text-xs font-extrabold rounded-xl focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 text-right transition-all placeholder:text-slate-500"
-                            placeholder="0"
+                            className="w-24 px-3 py-1.5 bg-slate-800 border border-slate-700 text-white text-xs font-extrabold rounded-xl focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 text-right transition-all"
                           />
                         </div>
                       </div>
@@ -714,8 +713,7 @@ export default function WorkshopPage() {
                         const grand = Math.max(0, (selectedJob.parts_total + parseFloat(selectedJob.labour_charge || 0)) - disc);
                         setPaidAmount(grand);
                       }}
-                      placeholder="0"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500/20 placeholder:text-slate-400"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm font-bold text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
                     />
                   </div>
 

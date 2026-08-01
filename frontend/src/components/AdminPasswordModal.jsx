@@ -74,7 +74,6 @@ export default function AdminPasswordModal({ isOpen, onClose, onConfirm, title =
               autoFocus
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your security password..."
               className="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm font-mono focus:outline-none focus:border-blue-500 shadow-inner"
             />
           </div>

@@ -216,8 +216,7 @@ export default function LoginPage() {
                 disabled={lockoutSeconds > 0}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter username..."
-                className="w-full pl-11 pr-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 disabled:opacity-40"
+                className="w-full pl-11 pr-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 disabled:opacity-40"
               />
             </div>
           </div>
@@ -246,8 +245,7 @@ export default function LoginPage() {
                 disabled={lockoutSeconds > 0}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter password..."
-                className="w-full pl-11 pr-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 disabled:opacity-40"
+                className="w-full pl-11 pr-4 py-3 bg-slate-900/80 border border-slate-700 rounded-xl text-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500 disabled:opacity-40"
               />
             </div>
           </div>
@@ -297,10 +295,9 @@ export default function LoginPage() {
                 <input
                   type="text"
                   required
-                  placeholder="Enter registered 10-digit mobile number"
                   value={otpPhone}
                   onChange={(e) => setOtpPhone(e.target.value)}
-                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 text-sm focus:outline-none focus:border-blue-500"
+                  className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -309,7 +306,6 @@ export default function LoginPage() {
                 <input
                   type="password"
                   required
-                  placeholder="Enter new password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500"
@@ -321,7 +317,6 @@ export default function LoginPage() {
                 <input
                   type="password"
                   required
-                  placeholder="Confirm new password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white text-sm focus:outline-none focus:border-blue-500"
