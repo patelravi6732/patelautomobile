@@ -5,7 +5,7 @@ import API from '../services/api';
 import AdminPasswordModal from '../components/AdminPasswordModal';
 import { useAuth } from '../context/AuthContext';
 import { generateBookingNotificationMessage } from '../utils/aiMessageGenerator';
-import { fetchCloudBookings } from '../utils/cloudSync';
+import { fetchCloudBookings, updateCloudBookingStatus } from '../utils/cloudSync';
 
 const DEFAULT_BOOKING_DATE = new Date();
 
@@ -175,23 +175,24 @@ export default function BookingsPage() {
     if (!booking) return;
 
     setConfirmModal({ isOpen: false, booking: null, actionType: 'ACCEPT' });
+    const newStatus = actionType === 'ACCEPT' ? 'ACCEPTED' : 'REJECTED';
 
-    if (actionType === 'ACCEPT') {
-      try {
+    // Update Global Cloud Store so status updates sync across devices
+    updateCloudBookingStatus(booking.id, newStatus).catch(console.warn);
+
+    // Update local state directly
+    setBookings(prev => prev.map(b => b.id === booking.id ? { ...b, status: newStatus } : b));
+
+    try {
+      if (actionType === 'ACCEPT') {
         await API.post(`/bookings/${booking.id}/accept/`);
-        fetchBookings();
-        openNotifyModal(booking, true);
-      } catch (err) {
-        alert('Failed to accept booking');
-      }
-    } else {
-      try {
+      } else {
         await API.post(`/bookings/${booking.id}/reject/`);
-        fetchBookings();
-        openNotifyModal(booking, false);
-      } catch (err) {
-        alert('Failed to reject booking');
       }
+    } catch (err) {
+      console.warn('Backend API offline or error on static host:', err);
+    } finally {
+      openNotifyModal(booking, actionType === 'ACCEPT');
     }
   };
 
