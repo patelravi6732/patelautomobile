@@ -33,21 +33,24 @@ async function saveMasterStore(storeData) {
 // ---------------- BOOKINGS ----------------
 export async function fetchCloudBookings() {
   const store = await fetchMasterStore();
-  return store.bookings;
+  return (store.bookings || []).filter(b => b && typeof b === 'object' && (b.id || b.customer_name || b.vehicle_number));
 }
 
 export async function pushCloudBooking(newBooking) {
+  if (!newBooking || typeof newBooking !== 'object') return;
   const store = await fetchMasterStore();
-  const exists = store.bookings.some(b => 
+  const existing = (store.bookings || []).filter(b => b && typeof b === 'object');
+  
+  const exists = existing.some(b => 
     b.id === newBooking.id || 
-    (b.vehicle_number === newBooking.vehicle_number && b.preferred_date === newBooking.preferred_date)
+    (b.vehicle_number && newBooking.vehicle_number && b.vehicle_number === newBooking.vehicle_number && b.preferred_date === newBooking.preferred_date)
   );
 
-  let updatedBookings = store.bookings;
+  let updatedBookings = existing;
   if (!exists) {
-    updatedBookings = [newBooking, ...store.bookings];
+    updatedBookings = [newBooking, ...existing];
   } else {
-    updatedBookings = store.bookings.map(b => 
+    updatedBookings = existing.map(b => 
       (b.id === newBooking.id || (b.vehicle_number === newBooking.vehicle_number && b.preferred_date === newBooking.preferred_date))
         ? { ...b, ...newBooking }
         : b
@@ -58,8 +61,10 @@ export async function pushCloudBooking(newBooking) {
 }
 
 export async function updateCloudBookingStatus(bookingId, newStatus) {
+  if (!bookingId) return;
   const store = await fetchMasterStore();
-  const updatedBookings = store.bookings.map(b => {
+  const existing = (store.bookings || []).filter(b => b && typeof b === 'object');
+  const updatedBookings = existing.map(b => {
     if (b.id === bookingId || String(b.id) === String(bookingId)) {
       return { ...b, status: newStatus };
     }
@@ -71,16 +76,18 @@ export async function updateCloudBookingStatus(bookingId, newStatus) {
 // ---------------- MESSAGES (CONTACT INQUIRIES) ----------------
 export async function fetchCloudMessages() {
   const store = await fetchMasterStore();
-  return store.messages;
+  return (store.messages || []).filter(m => m && typeof m === 'object' && (m.id || m.name || m.phone || m.message));
 }
 
 export async function pushCloudMessage(newMsg) {
+  if (!newMsg || typeof newMsg !== 'object') return;
   const store = await fetchMasterStore();
-  const exists = store.messages.some(m => m.id === newMsg.id || (m.name === newMsg.name && m.phone === newMsg.phone && m.message === newMsg.message));
+  const existing = (store.messages || []).filter(m => m && typeof m === 'object');
+  const exists = existing.some(m => m.id === newMsg.id || (m.name === newMsg.name && m.phone === newMsg.phone && m.message === newMsg.message));
   
-  let updated = store.messages;
+  let updated = existing;
   if (!exists) {
-    updated = [newMsg, ...store.messages];
+    updated = [newMsg, ...existing];
   }
   await saveMasterStore({ ...store, messages: updated });
 }
@@ -88,15 +95,17 @@ export async function pushCloudMessage(newMsg) {
 // ---------------- WORKSHOP JOBS (CONVERT TO SERVICE) ----------------
 export async function fetchCloudJobs() {
   const store = await fetchMasterStore();
-  return store.jobs;
+  return (store.jobs || []).filter(j => j && typeof j === 'object' && (j.id || j.customer_name || j.vehicle_number));
 }
 
 export async function pushCloudJob(newJob) {
+  if (!newJob || typeof newJob !== 'object') return;
   const store = await fetchMasterStore();
-  const exists = store.jobs.some(j => j.id === newJob.id || (j.vehicle_number === newJob.vehicle_number && j.status === 'IN_PROGRESS'));
-  let updated = store.jobs;
+  const existing = (store.jobs || []).filter(j => j && typeof j === 'object');
+  const exists = existing.some(j => j.id === newJob.id || (j.vehicle_number && newJob.vehicle_number && j.vehicle_number === newJob.vehicle_number && j.status === 'IN_PROGRESS'));
+  let updated = existing;
   if (!exists) {
-    updated = [newJob, ...store.jobs];
+    updated = [newJob, ...existing];
   }
   await saveMasterStore({ ...store, jobs: updated });
 }
