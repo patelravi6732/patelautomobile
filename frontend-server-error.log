@@ -1,0 +1,630 @@
+[2m10:50:45 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:50:45 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:50:45 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:50:45 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:51:04 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:51:04 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:51:04 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:51:04 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:51:19 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:51:19 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:51:19 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:51:19 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:52:09 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:52:09 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:52:09 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:52:09 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:52:09 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:52:09 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:52:25 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:52:25 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:52:27 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:52:27 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:52:27 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:52:27 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:52:28 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:52:28 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:52:28 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:52:28 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:52:35 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:52:35 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:53:18 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:53:18 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:53:18 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:53:18 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:53:18 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:53:18 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:53:23 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:53:23 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:53:23 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:53:23 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:54:02 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: garageInfo is not defined
+[39m > LoginPage src/pages/LoginPage.jsx:179:13
+    177 |            </div>
+    178 |            <h1 className="text-2xl font-bold text-white font-poppins">
+    179 |              {garageInfo?.garage_name || 'Patel Automobiles'}
+        |               ^
+    180 |            </h1>
+    181 |            <p className="text-xs text-slate-400 font-medium">Admin Portal • Dandi, Valsad, Gujarat</p>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m10:54:02 am[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <LoginPage> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m10:54:21 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:54:21 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:54:21 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:54:21 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:54:34 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:54:34 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:54:34 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:54:34 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:55:07 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:07 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:07 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:55:07 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:55:12 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:12 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:12 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:55:12 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:55:16 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:16 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/public/info/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:16 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:55:16 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mFailed to load garage info AxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+[2m10:55:29 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:29 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:55:33 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:33 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:34 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:55:59 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:55:59 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:02 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:02 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:13 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:13 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:14 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:14 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:40 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:40 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:41 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:41 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:41 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:41 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:42 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:43 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:44 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:44 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:44 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:44 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:56:44 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:56:44 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:57:10 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/verify-otp-reset/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:57:18 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:57:18 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:57:20 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:57:20 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:57:30 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:57:30 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
+[2m10:57:31 am[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/token/[39m
+Error: connect ECONNREFUSED 127.0.0.1:8000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1706:16)
+[2m10:57:31 am[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mAxiosError: Request failed with status code 502
+    at settle (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:1838:14)
+    at XMLHttpRequest.onloadend (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:2231:4)
+    at Axios$1.request (http://127.0.0.1:5173/node_modules/.vite/deps/axios.js?v=63973f1a:3024:37)
+    at async login (http://127.0.0.1:5173/src/context/AuthContext.jsx:46:15)
+    at async handleLogin (http://127.0.0.1:5173/src/pages/LoginPage.jsx?t=1785475461753:62:4)
