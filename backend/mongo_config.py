@@ -17,8 +17,12 @@ MONGODB_URI = os.getenv(
 def get_db():
     if not MongoClient:
         return None
-    client = MongoClient(MONGODB_URI)
-    return client['patelautomobile']
+    try:
+        client = MongoClient(MONGODB_URI, tlsAllowInvalidCertificates=True, serverSelectionTimeoutMS=5000)
+        return client['patel_automobiles_db']
+    except Exception as e:
+        print(f"MongoDB connection warning: {e}")
+        return None
 
 def init_mongo_collections():
     db = get_db()
