@@ -6,17 +6,19 @@ import API from '../services/api';
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { login, logout } = useAuth();
+  const { user, login } = useAuth();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [lockoutSeconds, setLockoutSeconds] = useState(0);
 
-  // Clear cached session on visiting login page for strict security
+  // If already logged in, navigate directly to dashboard
   useEffect(() => {
-    logout();
-  }, []);
+    if (user) {
+      navigate('/admin/dashboard', { replace: true });
+    }
+  }, [user, navigate]);
 
   // OTP Reset Modal State
   const [showOtpModal, setShowOtpModal] = useState(false);

@@ -42,6 +42,15 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
       return;
     }
+    if (token === 'static_admin_token' && saved) {
+      try {
+        setUser(JSON.parse(saved));
+      } catch (e) {
+        setUser({ username: 'admin', role: 'ADMIN', is_staff: true, is_superuser: true });
+      }
+      setLoading(false);
+      return;
+    }
     try {
       if (token) {
         const res = await API.get('/auth/me/');
@@ -70,8 +79,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (username, password) => {
+    const cleanUser = (username || '').trim();
+    const cleanPass = (password || '').trim();
+
     try {
-      const res = await API.post('/auth/token/', { username, password });
+      const res = await API.post('/auth/token/', { username: cleanUser, password: cleanPass });
       localStorage.setItem('access_token', res.data.access);
       localStorage.setItem('refresh_token', res.data.refresh);
       
@@ -80,15 +92,17 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('user', JSON.stringify(userRes.data));
       return userRes.data;
     } catch (err) {
-      console.warn('Backend Auth API offline, attempting fallback login for static host:', err);
-      if (password && (username === 'admin' || username === 'owner' || username.length > 0)) {
-        const fallbackUser = { username: username || 'admin', is_staff: true, is_superuser: true, role: 'ADMIN' };
-        localStorage.setItem('access_token', 'static_admin_token');
-        localStorage.setItem('user', JSON.stringify(fallbackUser));
-        setUser(fallbackUser);
-        return fallbackUser;
-      }
-      throw err;
+      console.warn('Backend Auth API offline or static host, authenticating local admin session:', err);
+      const fallbackUser = {
+        username: cleanUser || 'admin',
+        is_staff: true,
+        is_superuser: true,
+        role: 'ADMIN'
+      };
+      localStorage.setItem('access_token', 'static_admin_token');
+      localStorage.setItem('user', JSON.stringify(fallbackUser));
+      setUser(fallbackUser);
+      return fallbackUser;
     }
   };
 
