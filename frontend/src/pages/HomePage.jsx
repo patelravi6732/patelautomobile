@@ -129,7 +129,7 @@ export default function HomePage() {
                   <p className="text-xs text-slate-300 mb-1">Direct Call Support</p>
                   <a href={`tel:${garageInfo?.phone}`} className="text-lg font-bold text-white hover:text-orange-400 transition-colors flex items-center justify-center gap-2">
                     <PhoneCall className="w-5 h-5 text-emerald-400" />
-                    {garageInfo?.phone || '+91 98250 12345'}
+                    {garageInfo?.phone || '+91 63524 86040'}
                   </a>
                 </div>
               </div>
@@ -285,7 +285,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-3">
                 <PhoneCall className="w-5 h-5 text-emerald-400 shrink-0" />
-                <span>{garageInfo?.phone || '+91 98250 12345'}</span>
+                <span>{garageInfo?.phone || '+91 63524 86040'}</span>
               </div>
             </div>
             <div className="pt-2">

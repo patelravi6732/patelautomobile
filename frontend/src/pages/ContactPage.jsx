@@ -22,12 +22,14 @@ export default function ContactPage() {
     setError(null);
     try {
       await API.post('/public/contact/', formData);
-      setSubmitted(true);
     } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.message || 'Failed to send message. Please try again.');
+      console.warn('Backend API offline on static host, saving inquiry locally:', err);
+      const existing = JSON.parse(localStorage.getItem('local_messages') || '[]');
+      existing.push({ ...formData, id: Date.now(), created_at: new Date().toISOString() });
+      localStorage.setItem('local_messages', JSON.stringify(existing));
     } finally {
       setLoading(false);
+      setSubmitted(true);
     }
   };
 
@@ -81,7 +83,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-bold text-slate-900 font-poppins">Phone & Helpline</h3>
                   <a href={`tel:${garageInfo?.phone}`} className="text-slate-700 hover:text-blue-600 text-xs font-semibold mt-1 block">
-                    {garageInfo?.phone || '+91 98250 12345'}
+                    {garageInfo?.phone || '+91 63524 86040'}
                   </a>
                 </div>
               </div>

@@ -5,13 +5,13 @@
  * Supports AI Re-Generation / Variation Cycle
  */
 
-export function generateBookingNotificationMessage(booking, isAccepted, lang = 'GUJARATI', variationIndex = 0, garagePhone = '+91 98250 12345') {
+export function generateBookingNotificationMessage(booking, isAccepted, lang = 'GUJARATI', variationIndex = 0, garagePhone = '+91 63524 86040') {
   const customerName = booking?.customer_name || 'Customer';
   const vehicleNumber = booking?.vehicle_number || '';
   const bikeModel = booking?.bike_model || '';
   const prefDate = booking?.preferred_date || '';
   const prefTime = booking?.preferred_time || '';
-  const phone = garagePhone || '+91 98250 12345';
+  const phone = garagePhone || '+91 63524 86040';
 
   if (lang === 'GUJARATI') {
     if (isAccepted) {
@@ -161,9 +161,9 @@ Patel Automobiles`
   }
 }
 
-export function generateInquiryReplyMessage(msgObj, lang = 'GUJARATI', variationIndex = 0, garagePhone = '+91 98250 12345') {
+export function generateInquiryReplyMessage(msgObj, lang = 'GUJARATI', variationIndex = 0, garagePhone = '+91 63524 86040') {
   const name = msgObj?.name || 'Customer';
-  const phone = garagePhone || '+91 98250 12345';
+  const phone = garagePhone || '+91 63524 86040';
   const userMsg = msgObj?.message || '';
 
   if (lang === 'GUJARATI') {

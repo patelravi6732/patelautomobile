@@ -160,11 +160,11 @@ export default function AboutPage() {
             </Link>
 
             <a
-              href={`tel:${garageInfo?.phone || '+919825012345'}`}
+              href={`tel:${garageInfo?.phone || '+916352486040'}`}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold text-sm px-6 py-4 rounded-2xl border border-white/20 backdrop-blur-sm transition-all"
             >
               <PhoneCall className="w-4 h-4 text-emerald-400" />
-              {garageInfo?.phone || '+91 98250 12345'}
+              {garageInfo?.phone || '+91 63524 86040'}
             </a>
           </div>
         </div>
