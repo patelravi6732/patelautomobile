@@ -14,16 +14,16 @@ def seed():
     print("Seeding database...")
     # Ensure existing superuser/admin accounts have ADMIN role set
     for admin_user in User.objects.filter(is_superuser=True):
-        UserProfile.objects.get_or_create(user=admin_user, defaults={'role': 'ADMIN', 'phone': '+919825012345'})
+        UserProfile.objects.get_or_create(user=admin_user, defaults={'role': 'ADMIN', 'phone': '+918140371414'})
 
     # 3. Garage Settings
     settings, _ = GarageSettings.objects.get_or_create(
         id=1,
         defaults={
-            'garage_name': 'Patel Automobile',
-            'address': 'Station Road, Near Railway Crossing, Anand, Gujarat - 388001',
-            'phone': '+91 98250 12345',
-            'whatsapp_number': '+919825012345'
+            'garage_name': 'Patel Automobiles',
+            'address': 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385',
+            'phone': '+91 81403 71414',
+            'whatsapp_number': '+91 81403 71414'
         }
     )
 

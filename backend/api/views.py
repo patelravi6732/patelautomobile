@@ -133,7 +133,7 @@ def login_with_lockout(request):
             user=user,
             user_name=user.first_name or user.username,
             username=user.username,
-            phone='+91 98250 12345'
+            phone='+91 81403 71414'
         )
 
     ok, err_msg = process_admin_password_attempt(admin_profile, password)
@@ -164,7 +164,7 @@ def current_user(request):
                 user_name=user.first_name or user.username,
                 username=user.username,
                 email=user.email or 'admin@patelautomobiles.com',
-                phone='+91 98250 12345'
+                phone='+91 81403 71414'
             )
         else:
             if prof.user != user:
@@ -1303,7 +1303,7 @@ class KhataBookViewSet(viewsets.ViewSet):
                 f"✓ Cash / Card at Dandi Workshop Desk\n\n"
                 f"Kindly clear your outstanding balance of *₹{pending_val:,.2f}* at your earliest convenience.\n\n"
                 f"📍 *Patel Automobiles • Dandi*\n"
-                f"Near Dandi Pond, Dandi, Valsad, Gujarat | 📞 +91 6352486040\n"
+                f"Near Dandi Pond, Dandi, Valsad, Gujarat | 📞 +91 81403 71414\n"
                 f"*** Thank You For Your Business! Safe Riding! ***"
             )
 
@@ -1725,7 +1725,7 @@ class AdminProfileViewSet(viewsets.ModelViewSet):
         password = request.data.get('password', '').strip()
         if not password:
             return Response({'error': 'Password is required to create an admin account.'}, status=status.HTTP_400_BAD_REQUEST)
-        phone = request.data.get('phone', '+91 98250 12345').strip()
+        phone = request.data.get('phone', '+91 81403 71414').strip()
         photo = request.data.get('profile_photo', '/logo.png')
         dob = request.data.get('date_of_birth', None)
 

@@ -17,8 +17,8 @@ export default function SettingsPage() {
     garage_name: 'Patel Automobiles',
     logo: '/logo.png',
     address: 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385',
-    phone: '+91 98250 12345',
-    whatsapp_number: '+919825012345',
+    phone: '+91 81403 71414',
+    whatsapp_number: '+91 81403 71414',
     email: 'contact@patelautomobiles.com',
     timing_text: 'Mon - Sat: 09:00 AM - 08:30 PM, Sun: 09:00 AM - 02:00 PM',
     mechanics_list: 'Patel Owner, Ramesh Mechanic, Suresh Technician',
@@ -145,8 +145,8 @@ export default function SettingsPage() {
         garage_name: garageInfo.garage_name || 'Patel Automobiles',
         logo: garageInfo.logo || '/logo.png',
         address: garageInfo.address || 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385',
-        phone: garageInfo.phone || '+91 6352486040',
-        whatsapp_number: garageInfo.whatsapp_number || '+916352486040',
+        phone: garageInfo.phone || '+91 81403 71414',
+        whatsapp_number: garageInfo.whatsapp_number || '+91 81403 71414',
         email: garageInfo.email || 'contact@patelautomobiles.com',
         timing_text: garageInfo.timing_text || 'Mon - Sat: 09:00 AM - 08:30 PM, Sun: 09:00 AM - 02:00 PM',
         safety_message: garageInfo.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️',
@@ -223,7 +223,7 @@ export default function SettingsPage() {
     setAdminOtpCode('');
     setAdminOtpTimer(30);
 
-    const targetPhone = adminForm.phone || '+91 6352486040';
+    const targetPhone = adminForm.phone || '+91 81403 71414';
     setAdminOtpLoading(true);
     try {
       const res = await API.post('/auth/request-otp/', { phone: targetPhone });

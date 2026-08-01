@@ -109,7 +109,7 @@ const renderCanvasInternal = (invoice, garageInfo, logoImg, qrImg) => {
 
   ctx.fillStyle = '#0f172a';
   ctx.font = 'bold 13.5px Consolas, "Liberation Mono", monospace, sans-serif';
-  ctx.fillText(`📞 ${garageInfo?.phone || '+91 6352486040'}`, pad + 86, currentY + 68);
+  ctx.fillText(`📞 ${garageInfo?.phone || '+91 81403 71414'}`, pad + 86, currentY + 68);
 
   // Date Top Right
   const invDate = inv.created_at || inv.visit_date || Date.now();
@@ -159,7 +159,7 @@ const renderCanvasInternal = (invoice, garageInfo, logoImg, qrImg) => {
 
   ctx.fillStyle = '#334155';
   ctx.font = 'bold 13.5px Consolas, "Liberation Mono", monospace, sans-serif';
-  ctx.fillText(`📞 ${inv.customer_mobile || inv.mobile_number || inv.phone || '6352486040'}`, pad + 20, boxY + 68);
+  ctx.fillText(`📞 ${inv.customer_mobile || inv.mobile_number || inv.phone || '8140371414'}`, pad + 20, boxY + 68);
 
   // Vehicle Details Right
   const col2X = pad + 380;
@@ -346,7 +346,7 @@ const renderCanvasInternal = (invoice, garageInfo, logoImg, qrImg) => {
 
   ctx.fillStyle = '#334155';
   ctx.font = 'bold 13.5px Consolas, "Liberation Mono", monospace, sans-serif';
-  ctx.fillText(`📞 Contact: ${garageInfo?.phone || '+91 6352486040'}`, centerX, currentY + 54);
+  ctx.fillText(`📞 Contact: ${garageInfo?.phone || '+91 81403 71414'}`, centerX, currentY + 54);
 
   ctx.fillStyle = '#0f172a';
   ctx.font = 'bold 14.5px "Segoe UI", Roboto, system-ui, -apple-system, sans-serif';

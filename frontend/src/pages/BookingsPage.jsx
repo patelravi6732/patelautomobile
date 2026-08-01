@@ -10,7 +10,7 @@ const DEFAULT_BOOKING_DATE = new Date();
 
 export default function BookingsPage() {
   const { garageInfo } = useAuth();
-  const garagePhone = garageInfo?.phone || '+91 98250 12345';
+  const garagePhone = garageInfo?.phone || '+91 81403 71414';
 
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);

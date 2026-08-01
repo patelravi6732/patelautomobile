@@ -158,11 +158,11 @@ export default function BillingPage() {
 
   // Direct WhatsApp Chat Launcher with Thank You Message
   const handleOpenWhatsAppChat = (inv) => {
-    const custPhone = inv.customer_mobile || inv.mobile_number || inv.service_job?.mobile_number || '6352486040';
+    const custPhone = inv.customer_mobile || inv.mobile_number || inv.service_job?.mobile_number || '8140371414';
     let phoneClean = ''.concat(custPhone || '').replace(/\D/g, '');
     if (!phoneClean.startsWith('91') && phoneClean.length === 10) phoneClean = '91' + phoneClean;
 
-    const contactPhone = garageInfo?.phone || '+91 6352486040';
+    const contactPhone = garageInfo?.phone || '+91 81403 71414';
     const garageName = garageInfo?.garage_name || 'Patel Automobiles';
     const safetyMsg = garageInfo?.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️';
 
@@ -485,7 +485,7 @@ export default function BillingPage() {
                     {garageInfo?.address || 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385'}
                   </p>
                   <p className="text-xs font-bold text-slate-800 font-mono mt-0.5 whitespace-nowrap">
-                    📞 {garageInfo?.phone || '+91 98250 12345'}
+                    📞 {garageInfo?.phone || '+91 81403 71414'}
                   </p>
                 </div>
               </div>
@@ -499,7 +499,7 @@ export default function BillingPage() {
                 <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider block">Customer Details</span>
                 <span className="font-extrabold text-slate-900 text-sm block">{selectedInvoice.customer_name}</span>
                 <span className="text-slate-700 font-bold font-mono text-xs block mt-0.5 whitespace-nowrap">
-                  📞 {selectedInvoice.customer_mobile || selectedInvoice.mobile_number || selectedInvoice.service_job?.mobile_number || garageInfo?.phone || '+91 98250 12345'}
+                  📞 {selectedInvoice.customer_mobile || selectedInvoice.mobile_number || selectedInvoice.service_job?.mobile_number || garageInfo?.phone || '+91 81403 71414'}
                 </span>
               </div>
               <div>
@@ -596,7 +596,7 @@ export default function BillingPage() {
                 {garageInfo?.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️'}
               </p>
               <p className="text-xs font-bold text-slate-700 font-mono pt-1">
-                📞 Contact: {garageInfo?.phone || '+91 6352486040'}
+                📞 Contact: {garageInfo?.phone || '+91 81403 71414'}
               </p>
               <p className="text-xs font-black text-slate-900 font-poppins">
                 — {garageInfo?.garage_name || 'Patel Automobiles'}

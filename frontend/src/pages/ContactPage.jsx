@@ -83,7 +83,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-bold text-slate-900 font-poppins">Phone & Helpline</h3>
                   <a href={`tel:${garageInfo?.phone}`} className="text-slate-700 hover:text-blue-600 text-xs font-semibold mt-1 block">
-                    {garageInfo?.phone || '+91 63524 86040'}
+                    {garageInfo?.phone || '+91 81403 71414'}
                   </a>
                 </div>
               </div>

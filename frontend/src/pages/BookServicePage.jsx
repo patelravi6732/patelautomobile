@@ -112,12 +112,12 @@ export default function BookServicePage() {
             </div>
             <div className="flex flex-col sm:flex-row justify-center gap-3 pt-2">
               <a
-                href={`https://wa.me/916352486040?text=${encodeURIComponent(`Hello Patel Automobiles, I have submitted a service booking for my bike ${formData.vehicle_number} (${formData.bike_model}).\n• Name: ${formData.customer_name}\n• Mobile: ${formData.mobile_number}\n• Preferred Date: ${formData.preferred_date} (${formData.preferred_time})`)}`}
+                href={`https://wa.me/918140371414?text=${encodeURIComponent(`Hello Patel Automobiles, I have submitted a service booking for my bike ${formData.vehicle_number} (${formData.bike_model}).\n• Name: ${formData.customer_name}\n• Mobile: ${formData.mobile_number}\n• Preferred Date: ${formData.preferred_date} (${formData.preferred_time})`)}`}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-lg shadow-emerald-600/30 transition-all hover:scale-105"
               >
-                Send Confirmation on WhatsApp (+91 63524 86040)
+                Send Confirmation on WhatsApp (+91 81403 71414)
               </a>
               <button
                 onClick={() => {

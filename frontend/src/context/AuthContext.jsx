@@ -4,8 +4,8 @@ import API from '../services/api';
 export const DEFAULT_GARAGE_INFO = {
   garage_name: 'Patel Automobiles',
   address: 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385',
-  phone: '+91 63524 86040',
-  whatsapp_number: '+91 63524 86040',
+  phone: '+91 81403 71414',
+  whatsapp_number: '+91 81403 71414',
   email: 'patelautomobile9397@gmail.com',
   logo: '/logo.png',
   upi_id: 'pritpatel9397@oksbi',

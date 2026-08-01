@@ -7,7 +7,7 @@ import { generateInquiryReplyMessage } from '../utils/aiMessageGenerator';
 
 export default function MessagesPage() {
   const { garageInfo } = useAuth();
-  const garagePhone = garageInfo?.phone || '+91 98250 12345';
+  const garagePhone = garageInfo?.phone || '+91 81403 71414';
 
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);

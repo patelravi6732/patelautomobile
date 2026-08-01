@@ -174,11 +174,11 @@ export default function KhataBookPage() {
   };
 
   const handleOpenWhatsAppChat = (customer) => {
-    const custPhone = customer.phone || '6352486040';
+    const custPhone = customer.phone || '8140371414';
     let phoneClean = ''.concat(custPhone || '').replace(/\D/g, '');
     if (!phoneClean.startsWith('91') && phoneClean.length === 10) phoneClean = '91' + phoneClean;
 
-    const contactPhone = garageInfo?.phone || '+91 6352486040';
+    const contactPhone = garageInfo?.phone || '+91 81403 71414';
     const garageName = garageInfo?.garage_name || 'Patel Automobiles';
     const safetyMsg = garageInfo?.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️';
 
@@ -541,7 +541,7 @@ export default function KhataBookPage() {
                     {garageInfo?.address || 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385'}
                   </p>
                   <p className="text-xs font-bold text-slate-800 font-mono mt-0.5 whitespace-nowrap">
-                    📞 {garageInfo?.phone || '+91 98250 12345'}
+                    📞 {garageInfo?.phone || '+91 81403 71414'}
                   </p>
                 </div>
               </div>
@@ -634,7 +634,7 @@ export default function KhataBookPage() {
                 🛵 {garageInfo?.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️'}
               </p>
               <p className="text-[10px] font-bold text-slate-600 tracking-wider">
-                {garageInfo?.garage_name || 'Patel Automobiles'} • Dandi, Valsad | 📞 {garageInfo?.phone || '+91 6352486040'}
+                {garageInfo?.garage_name || 'Patel Automobiles'} • Dandi, Valsad | 📞 {garageInfo?.phone || '+91 81403 71414'}
               </p>
             </div>
           </div>
