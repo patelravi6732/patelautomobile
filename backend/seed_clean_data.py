@@ -47,11 +47,10 @@ def seed_clean():
         address='Near Dandi Pond, Dandi, Valsad, Gujarat - 396385',
         phone='+91 81403 71414',
         whatsapp_number='+91 81403 71414',
-        email='contact@patelautomobiles.com',
-        timing_text='Mon - Sat: 09:00 AM - 08:30 PM, Sun: 09:00 AM - 02:00 PM',
-        mechanics_list='Vijay Owner, Patel Owner, Ramesh Mechanic, Suresh Technician',
-        default_labour_charge=300.00,
-        default_min_stock=5
+        timing_text='Mon - Sat: 09:00 AM - 06:30 PM, Sun: 09:00 AM - 02:00 PM',
+        mechanics_list='Amitbhai Mechanic, Manoj Mechanic, Vishal Mechanic',
+        default_labour_charge=100.00,
+        default_min_stock=3
     )
 
     # Standard Real Two-Wheeler Spare Parts Inventory Catalog
