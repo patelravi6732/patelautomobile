@@ -38,6 +38,11 @@ export default function NewServicePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const cleanPhone = (formData.mobile_number || '').replace(/\D/g, '');
+    if (cleanPhone.length !== 10) {
+      alert('Mobile number must be compulsory 10 digits.');
+      return;
+    }
     setLoading(true);
     try {
       await API.post('/workshop/', formData);
@@ -98,8 +103,12 @@ export default function NewServicePage() {
                   <input
                     type="tel"
                     required
+                    maxLength={10}
+                    minLength={10}
+                    pattern="[0-9]{10}"
+                    placeholder="10-digit mobile number"
                     value={formData.mobile_number}
-                    onChange={(e) => setFormData({ ...formData, mobile_number: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, mobile_number: e.target.value.replace(/\D/g, '').slice(0, 10) })}
                     className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all shadow-xs"
                   />
                 </div>

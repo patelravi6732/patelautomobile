@@ -18,6 +18,11 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const cleanPhone = (formData.phone || '').replace(/\D/g, '');
+    if (cleanPhone.length !== 10) {
+      setError('Phone number must be compulsory 10 digits.');
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
@@ -162,8 +167,12 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       required
+                      maxLength={10}
+                      minLength={10}
+                      pattern="[0-9]{10}"
+                      placeholder="10-digit phone number"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
                       className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-600 text-sm font-medium transition-all shadow-xs"
                     />
                   </div>
