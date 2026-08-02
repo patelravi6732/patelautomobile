@@ -14,9 +14,9 @@ if env_file.exists():
                 k, v = line.strip().split('=', 1)
                 os.environ[k] = v
 
-FAST2SMS_API_KEY = os.environ.get('FAST2SMS_API_KEY', '9EoQtM62svny3kT04GcAZd8BHNezOrbmS7xwa1lqXDgCFV5hRKZ4ejHLtQ62izxT5kfBIEr7oVgv9DUX')
+FAST2SMS_API_KEY = os.environ.get('FAST2SMS_API_KEY', '')
 
-SECRET_KEY = 'django-insecure-patel-automobile-garage-management-key'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-local-development-only')
 
 DEBUG = True
 
@@ -93,7 +93,7 @@ DATABASES = {
 }
 
 # MongoDB Database Configuration
-MONGO_URI = os.getenv("MONGO_URI", "mongodb+srv://rockpatel6732_db_user:FYwO0vlU8Vehe3DM@cluster0.zh8vtin.mongodb.net/patel_automobiles_db?retryWrites=true&w=majority&appName=Cluster0")
+MONGO_URI = os.getenv("MONGO_URI", "")
 MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "patel_automobiles_db")
 
 AUTH_PASSWORD_VALIDATORS = []

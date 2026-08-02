@@ -2,8 +2,9 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from rest_framework.test import APIClient
 from api.models import (
-    UserProfile, InventoryItem, ServiceJob, JobPart, Customer, Invoice
+    UserProfile, InventoryItem, ServiceJob, JobPart, Customer, Invoice, Attendance
 )
+from apps.settings_app.models import RecycleBinItem
 
 class GarageLogicTestCase(TestCase):
     def setUp(self):
@@ -82,3 +83,39 @@ class GarageLogicTestCase(TestCase):
         # Stock remains 10
         self.item.refresh_from_db()
         self.assertEqual(self.item.current_stock, 10)
+
+    def test_finish_service_creates_invoice_customer_and_khata_due(self):
+        self.job.assigned_mechanic = 'Amitbhai Mechanic'
+        self.job.save()
+        self.client.post(f'/api/workshop/{self.job.id}/add_staged_part/', {
+            'inventory_id': self.item.id,
+            'quantity': 2
+        })
+
+        response = self.client.post(f'/api/workshop/{self.job.id}/finish_service/', {
+            'labour_charge': 300,
+            'discount_amount': 0,
+            'paid_amount': 1000,
+        })
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Invoice.objects.count(), 1)
+        invoice = Invoice.objects.get(service_job=self.job)
+        self.assertEqual(float(invoice.grand_total), 1200.0)
+        self.assertEqual(float(invoice.pending_amount), 200.0)
+        customer = Customer.objects.get(vehicle_number=self.job.vehicle_number)
+        self.assertEqual(float(customer.pending_amount), 200.0)
+        khata = self.client.get('/api/khata-book/')
+        self.assertEqual(khata.status_code, 200)
+        self.assertEqual(float(khata.data['total_pending_amount']), 200.0)
+
+    def test_delete_attendance_removes_active_record_and_creates_recycle_item(self):
+        attendance = Attendance.objects.create(mechanic_name='Amitbhai Mechanic')
+        response = self.client.post(
+            f'/api/attendance/{attendance.id}/delete_with_password/',
+            {'admin_password': 'adminpassword'}
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(Attendance.objects.filter(id=attendance.id).exists())
+        self.assertTrue(RecycleBinItem.objects.filter(item_type='ATTENDANCE').exists())

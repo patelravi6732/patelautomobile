@@ -231,7 +231,7 @@ def request_otp_reset(request):
 
     # Send SMS Gateway Notification
     try:
-        fast2sms_key = os.environ.get('FAST2SMS_API_KEY', '9EoQtM62svny3kT04GcAZd8BHNezOrbmS7xwa1lqXDgCFV5hRKZ4ejHLtQ62izxT5kfBIEr7oVgv9DUX')
+        fast2sms_key = os.environ.get('FAST2SMS_API_KEY', '')
         clean_num = ''.join(filter(str.isdigit, phone_input))
         if len(clean_num) > 10:
             clean_num = clean_num[-10:]
@@ -483,6 +483,58 @@ def log_admin_action(admin_name, action_type, description):
         )
     except Exception as e:
         print(f"Log admin action error: {e}")
+
+def sync_completed_service_to_mongodb(job, customer, invoice):
+    """Mirror a completed bill to Atlas without making the billing API depend on Atlas availability."""
+    try:
+        from config.mongodb import get_mongo_collection
+
+        service_jobs = get_mongo_collection('service_jobs')
+        customers = get_mongo_collection('customers')
+        invoices = get_mongo_collection('invoices')
+        if not all([service_jobs, customers, invoices]):
+            return
+
+        service_jobs.replace_one({'_id': job.id}, {
+            '_id': job.id,
+            'customer_name': job.customer_name,
+            'mobile_number': job.mobile_number,
+            'vehicle_number': job.vehicle_number,
+            'bike_model': job.bike_model,
+            'assigned_mechanic': job.assigned_mechanic,
+            'status': job.status,
+            'labour_charge': float(job.labour_charge),
+            'parts_total': float(job.parts_total),
+            'finished_at': job.finished_at.isoformat() if job.finished_at else None,
+        }, upsert=True)
+        customers.replace_one({'_id': customer.id}, {
+            '_id': customer.id,
+            'customer_name': customer.customer_name,
+            'mobile_number': customer.phone,
+            'vehicle_number': customer.vehicle_number,
+            'pending_amount': float(customer.pending_amount),
+            'visit_count': customer.visit_count,
+            'last_visit': customer.last_visit.isoformat() if customer.last_visit else None,
+        }, upsert=True)
+        invoices.replace_one({'_id': invoice.id}, {
+            '_id': invoice.id,
+            'invoice_number': invoice.invoice_number,
+            'service_job_id': job.id,
+            'customer_name': invoice.customer_name,
+            'mobile_number': invoice.mobile_number,
+            'vehicle_number': invoice.vehicle_number,
+            'bike_model': invoice.bike_model,
+            'labour_charge': float(invoice.labour_charge),
+            'parts_total': float(invoice.parts_total),
+            'grand_total': float(invoice.grand_total),
+            'paid_amount': float(invoice.paid_amount),
+            'pending_amount': float(invoice.pending_amount),
+            'payment_status': 'PAID' if invoice.pending_amount == 0 else 'PARTIAL',
+            'created_at': invoice.created_at.isoformat(),
+        }, upsert=True)
+    except Exception as exc:
+        # Atlas is an additional mirror; the transactional primary database must still succeed.
+        print(f"MongoDB completion sync warning: {exc}")
 
 def check_admin_password(request):
     admin_password = request.data.get('admin_password', '').strip() or request.query_params.get('admin_password', '').strip()
@@ -748,8 +800,18 @@ class WorkshopViewSet(viewsets.ModelViewSet):
         if not job.assigned_mechanic or job.assigned_mechanic == 'Unassigned':
             return Response({'error': 'Primary Mechanic assignment is compulsory! Please assign a mechanic before finishing the bill.'}, status=status.HTTP_400_BAD_REQUEST)
 
-        paid_amount = Decimal(str(request.data.get('paid_amount', 0) or 0))
-        discount_amount = Decimal(str(request.data.get('discount_amount', 0) or 0))
+        existing_invoice = Invoice.objects.filter(service_job=job).first()
+        if existing_invoice:
+            customer = Customer.objects.filter(vehicle_number=job.vehicle_number).first()
+            return Response({
+                'message': 'This service has already been billed.',
+                'invoice': InvoiceSerializer(existing_invoice).data,
+                'job': ServiceJobSerializer(job).data,
+                'customer': CustomerSerializer(customer).data if customer else None,
+            })
+
+        paid_amount = max(Decimal('0.00'), Decimal(str(request.data.get('paid_amount', 0) or 0)))
+        discount_amount = max(Decimal('0.00'), Decimal(str(request.data.get('discount_amount', 0) or 0)))
         labour_input = request.data.get('labour_charge')
 
         with transaction.atomic():
@@ -771,24 +833,24 @@ class WorkshopViewSet(viewsets.ModelViewSet):
 
             parts_tot = Decimal(str(sum([p.unit_price * p.quantity for p in job.parts.all()]) or 0))
             subtotal_bill = Decimal(str(job.labour_charge or 0)) + parts_tot
-            grand_total = max(Decimal('0.00'), subtotal_bill - max(Decimal('0.00'), discount_amount))
+            grand_total = max(Decimal('0.00'), subtotal_bill - discount_amount)
+            paid_amount = min(paid_amount, grand_total)
             pending_amt = max(Decimal('0.00'), grand_total - paid_amount)
 
             job.status = 'FINISHED'
             job.finished_at = timezone.now()
             job.save()
 
-            customer, _ = Customer.objects.get_or_create(
+            customer, created = Customer.objects.get_or_create(
                 vehicle_number=job.vehicle_number,
                 defaults={
                     'customer_name': job.customer_name,
                     'phone': job.mobile_number,
                 }
             )
-            if pending_amt > Decimal('0.00'):
-                current_pending = Decimal(str(customer.pending_amount or 0))
-                customer.pending_amount = current_pending + pending_amt
-                customer.save()
+            if not created:
+                customer.customer_name = job.customer_name
+                customer.phone = job.mobile_number
 
             last_inv = Invoice.objects.order_by('-id').first()
             next_id = (last_inv.id + 1) if last_inv else 1
@@ -807,11 +869,18 @@ class WorkshopViewSet(viewsets.ModelViewSet):
                 paid_amount=paid_amount,
                 pending_amount=pending_amt
             )
+            customer.pending_amount = Invoice.objects.filter(
+                vehicle_number__iexact=job.vehicle_number
+            ).aggregate(total=Sum('pending_amount'))['total'] or Decimal('0.00')
+            customer.save()
+
+        sync_completed_service_to_mongodb(job, customer, invoice)
 
         return Response({
             'message': 'Service completed & invoice created!',
             'invoice': InvoiceSerializer(invoice).data,
-            'job': ServiceJobSerializer(job).data
+            'job': ServiceJobSerializer(job).data,
+            'customer': CustomerSerializer(customer).data,
         })
 
     @action(detail=True, methods=['post'])

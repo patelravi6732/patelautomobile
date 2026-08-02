@@ -9,13 +9,13 @@ try:
 except ImportError:
     MongoClient = None
 
-MONGODB_URI = os.getenv(
-    "MONGODB_URI", 
-    "mongodb+srv://rockpatel6732_db_user:FYwO0vlU8Vehe3DM@cluster0.zh8vtin.mongodb.net/patel_automobiles_db?retryWrites=true&w=majority&appName=Cluster0"
-)
+MONGODB_URI = os.getenv("MONGODB_URI") or os.getenv("MONGO_URI", "")
 
 def get_db():
     if not MongoClient:
+        return None
+    if not MONGODB_URI:
+        print("MongoDB connection warning: MONGODB_URI is not configured")
         return None
     try:
         client = MongoClient(MONGODB_URI, tlsAllowInvalidCertificates=True, serverSelectionTimeoutMS=5000)

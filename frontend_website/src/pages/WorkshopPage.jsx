@@ -351,25 +351,7 @@ export default function WorkshopPage() {
       discount_amount: numericDiscount
     };
 
-    // 1. Update cloud jobs & local workshop memory
-    pushCloudJob(finishedJobData).catch(console.warn);
-    const currentJobs = JSON.parse(localStorage.getItem('workshop_jobs') || '[]');
-    const updatedLocal = currentJobs.map(j => (String(j.id) === String(targetId) ? finishedJobData : j));
-    if (!updatedLocal.some(j => String(j.id) === String(targetId))) {
-      updatedLocal.push(finishedJobData);
-    }
-    localStorage.setItem('workshop_jobs', JSON.stringify(updatedLocal));
-    setJobs(prev => prev.map(j => (String(j.id) === String(targetId) ? finishedJobData : j)));
-
-    // 2. Mark matching booking as COMPLETED
-    if (selectedJob.vehicle_number) {
-      updateCloudBookingStatus(null, 'COMPLETED', selectedJob.vehicle_number, selectedJob.preferred_date).catch(console.warn);
-      const localBookings = JSON.parse(localStorage.getItem('local_bookings') || '[]');
-      const updatedBookings = localBookings.map(b => (b.vehicle_number === selectedJob.vehicle_number ? { ...b, status: 'COMPLETED' } : b));
-      localStorage.setItem('local_bookings', JSON.stringify(updatedBookings));
-    }
-
-    // 3. Create Billing Invoice Object
+    // Used only if the server is unreachable. When online, the backend is the single source of truth.
     const newInvoiceObj = {
       id: `inv_${Date.now()}`,
       invoice_number: `INV-${String(targetId).slice(-4)}`,
@@ -388,41 +370,64 @@ export default function WorkshopPage() {
       created_at: completionTime,
       parts: selectedJob.parts || []
     };
-    pushCloudInvoice(newInvoiceObj).catch(console.warn);
-    const localInvoices = JSON.parse(localStorage.getItem('local_invoices') || '[]');
-    localStorage.setItem('local_invoices', JSON.stringify([newInvoiceObj, ...localInvoices]));
-
-    // 4. Auto-Push Unpaid Balance to Khata Book if pending amount > 0
-    if (unpaidAmount > 0) {
-      const khataDebitEntry = {
-        id: `khata_${Date.now()}`,
-        customer_name: selectedJob.customer_name,
-        mobile_number: selectedJob.mobile_number,
-        vehicle_number: selectedJob.vehicle_number,
-        bike_model: selectedJob.bike_model || 'Two Wheeler',
-        type: 'DEBIT',
-        amount: unpaidAmount,
-        description: `Unpaid balance from Service Bill (Total: ₹${grandTotal.toFixed(2)}, Paid: ₹${paidAmountNum.toFixed(2)})`,
-        date: completionTime
-      };
-      pushCloudKhataEntry(khataDebitEntry).catch(console.warn);
-      const localKhata = JSON.parse(localStorage.getItem('khata_entries') || '[]');
-      localStorage.setItem('khata_entries', JSON.stringify([khataDebitEntry, ...localKhata]));
-    }
-
-    setShowFinishModal(false);
-
+    let finalJob = finishedJobData;
+    let finalInvoice = newInvoiceObj;
+    let offlineCompletion = false;
     try {
       const res = await API.post(`/workshop/${targetId}/finish_service/`, {
         labour_charge: finishLabourNum,
         discount_amount: numericDiscount,
         paid_amount: paidAmountNum
       }, { timeout: 2000 });
-      alert(`🎉 Service finished! Invoice ${res.data?.invoice?.invoice_number || newInvoiceObj.invoice_number} generated.`);
+      finalJob = res.data?.job || finishedJobData;
+      finalInvoice = res.data?.invoice || newInvoiceObj;
     } catch (err) {
-      console.warn('Backend API offline on static host, finished service bill locally:', err);
-      alert(`🎉 Service finished successfully! Invoice ${newInvoiceObj.invoice_number} generated.`);
+      if (err.response) {
+        alert(err.response.data?.error || 'Could not finish this service bill.');
+        return;
+      }
+      offlineCompletion = true;
+      console.warn('Backend unavailable; saving this completion locally:', err);
     }
+
+    pushCloudJob(finalJob).catch(console.warn);
+    const currentJobs = JSON.parse(localStorage.getItem('workshop_jobs') || '[]');
+    const updatedLocal = currentJobs.map(j => (String(j.id) === String(targetId) ? finalJob : j));
+    if (!updatedLocal.some(j => String(j.id) === String(targetId))) updatedLocal.push(finalJob);
+    localStorage.setItem('workshop_jobs', JSON.stringify(updatedLocal));
+    setJobs(prev => prev.map(j => (String(j.id) === String(targetId) ? finalJob : j)));
+
+    if (selectedJob.vehicle_number) {
+      updateCloudBookingStatus(null, 'COMPLETED', selectedJob.vehicle_number, selectedJob.preferred_date).catch(console.warn);
+      const localBookings = JSON.parse(localStorage.getItem('local_bookings') || '[]');
+      localStorage.setItem('local_bookings', JSON.stringify(localBookings.map(b => (b.vehicle_number === selectedJob.vehicle_number ? { ...b, status: 'COMPLETED' } : b))));
+    }
+
+    if (offlineCompletion) {
+      pushCloudInvoice(newInvoiceObj).catch(console.warn);
+      const localInvoices = JSON.parse(localStorage.getItem('local_invoices') || '[]');
+      localStorage.setItem('local_invoices', JSON.stringify([newInvoiceObj, ...localInvoices]));
+      if (unpaidAmount > 0) {
+        const khataDebitEntry = {
+          id: `khata_${Date.now()}`,
+          customer_name: selectedJob.customer_name,
+          mobile_number: selectedJob.mobile_number,
+          vehicle_number: selectedJob.vehicle_number,
+          bike_model: selectedJob.bike_model || 'Two Wheeler',
+          type: 'DEBIT', amount: unpaidAmount,
+          description: `Unpaid balance from Service Bill (Total: ₹${grandTotal.toFixed(2)}, Paid: ₹${paidAmountNum.toFixed(2)})`,
+          date: completionTime
+        };
+        pushCloudKhataEntry(khataDebitEntry).catch(console.warn);
+        const localKhata = JSON.parse(localStorage.getItem('khata_entries') || '[]');
+        localStorage.setItem('khata_entries', JSON.stringify([khataDebitEntry, ...localKhata]));
+      }
+    } else {
+      pushCloudInvoice(finalInvoice).catch(console.warn);
+    }
+
+    setShowFinishModal(false);
+    alert(`🎉 Service finished! Invoice ${finalInvoice.invoice_number} generated.`);
   };
 
   const handleCancelService = async (jobId) => {

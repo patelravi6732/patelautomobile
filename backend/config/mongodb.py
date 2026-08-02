@@ -8,7 +8,7 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017/")
+MONGO_URI = os.getenv("MONGO_URI", "")
 MONGO_DB_NAME = os.getenv("MONGO_DB_NAME", "patel_automobiles_db")
 
 mongo_client = None
@@ -16,6 +16,8 @@ mongo_db = None
 
 if MONGODB_AVAILABLE:
     try:
+        if not MONGO_URI:
+            raise ValueError("MONGO_URI is not configured")
         mongo_client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=2000)
         mongo_db = mongo_client[MONGO_DB_NAME]
         logger.info(f"MongoDB connection initialized for database: {MONGO_DB_NAME}")

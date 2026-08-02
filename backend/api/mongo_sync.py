@@ -2,10 +2,7 @@ import os
 import pymongo
 from pymongo import MongoClient
 
-MONGO_URI = os.getenv(
-    "MONGO_URI", 
-    "mongodb+srv://rockpatel6732_db_user:FYwO0vlU8Vehe3DM@cluster0.zh8vtin.mongodb.net/patel_automobiles_db?retryWrites=true&w=majority&appName=Cluster0"
-)
+MONGO_URI = os.getenv("MONGO_URI", "")
 
 client = None
 db = None
@@ -14,6 +11,9 @@ def get_mongo_db():
     global client, db
     if db is not None:
         return db
+    if not MONGO_URI:
+        print("MongoDB Atlas is not configured. Set MONGO_URI in backend/.env.")
+        return None
     try:
         client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
         db = client["patel_automobiles_db"]

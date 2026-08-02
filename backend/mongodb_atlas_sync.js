@@ -6,10 +6,13 @@
 const mongoose = require('mongoose');
 
 // MongoDB Atlas Connection URI
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://rockpatel6732_db_user:FYwO0vlU8Vehe3DM@cluster0.zh8vtin.mongodb.net/patel_automobiles_db?retryWrites=true&w=majority&appName=Cluster0";
+const MONGODB_URI = process.env.MONGODB_URI || process.env.MONGO_URI;
 
 const connectMongoDB = async () => {
   try {
+    if (!MONGODB_URI) {
+      throw new Error('MONGODB_URI is not configured');
+    }
     await mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

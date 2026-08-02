@@ -15,6 +15,7 @@ ENV/
 env/
 db.sqlite3
 *.log
+backend/.env
 
 # OS & IDE
 .DS_Store
