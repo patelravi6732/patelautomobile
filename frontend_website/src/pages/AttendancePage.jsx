@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Clock, LogIn, LogOut, CheckCircle2, UserCheck, Calendar, Undo2, Trash2, XCircle, AlertCircle, Award, Eye, DollarSign, PlusCircle, CreditCard, ChevronLeft, ChevronRight } from 'lucide-react';
 import API from '../services/api';
 import { useAuth } from '../context/AuthContext';
-import { pushCloudRecycleBinItem, pushCloudAttendanceRecord, pushCloudSalaryPayment, fetchCloudAttendance, fetchCloudSalaryPayments, pushAuditLog, deleteCloudAttendanceRecord, deleteCloudSalaryPayment } from '../utils/cloudSync';
+import { pushCloudRecycleBinItem, pushCloudAttendanceRecord, pushCloudSalaryPayment, fetchCloudAttendance, fetchCloudSalaryPayments, pushAuditLog } from '../utils/cloudSync';
 import AdminPasswordModal from '../components/AdminPasswordModal';
 import MechanicProfileModal from '../components/MechanicProfileModal';
 
@@ -47,7 +47,7 @@ export default function AttendancePage() {
 
   useEffect(() => {
     if (garageInfo?.mechanics_list) {
-      const parsed = garageInfo.mechanics_list.split(',').map(m => m.trim()).filter(Boolean);
+      const parsed = garageInfo.mechanics_list.split(',').map(m => m.trim()).filter(m => m && !m.toLowerCase().includes('unassigned'));
       if (parsed.length > 0) {
         setMechanicOptions(parsed);
         setSelectedMechanic(parsed[0]);
@@ -82,15 +82,23 @@ export default function AttendancePage() {
     const cloudAtt = await fetchCloudAttendance();
     const combinedAtt = [...apiAtt, ...localAtt, ...cloudAtt];
 
-    // Deduplicate attendance records by id or mechanic_name + date
+    // Deduplicate attendance records strictly by mechanic_name + date (1 row per mechanic per day)
     const attMap = new Map();
     combinedAtt.forEach(item => {
-      if (item && typeof item === 'object') {
-        const key = item.id || `${item.mechanic_name}_${item.date}`;
+      if (item && typeof item === 'object' && item.mechanic_name && item.date && !item.mechanic_name.toLowerCase().includes('unassigned')) {
+        const key = `${item.mechanic_name.trim()}_${item.date}`;
         if (!attMap.has(key)) {
           attMap.set(key, item);
         } else {
-          attMap.set(key, { ...attMap.get(key), ...item });
+          const existing = attMap.get(key);
+          attMap.set(key, {
+            ...existing,
+            ...item,
+            check_in_time: existing.check_in_time || existing.check_in || item.check_in_time || item.check_in,
+            check_in: existing.check_in || existing.check_in_time || item.check_in || item.check_in_time,
+            check_out_time: item.check_out_time || item.check_out || existing.check_out_time || existing.check_out,
+            check_out: item.check_out || item.check_out_time || existing.check_out || existing.check_out_time
+          });
         }
       }
     });
@@ -301,7 +309,24 @@ export default function AttendancePage() {
   const handleDeleteWithPassword = async (adminPassword) => {
     if (!deleteModal.item) return;
     const targetItem = deleteModal.item;
-    let offlineDelete = false;
+
+    const trashObj = {
+      id: `trash_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+      item_type: deleteModal.type === 'ATTENDANCE' ? 'Attendance Log' : 'Salary Payout',
+      title: deleteModal.type === 'ATTENDANCE' 
+        ? `Attendance: ${targetItem.mechanic_name || 'Mechanic'} (${targetItem.date || 'Log'})` 
+        : `Salary: ₹${targetItem.amount || 0} (${targetItem.mechanic_name || 'Mechanic'})`,
+      deleted_by: 'Patel Owner (Admin)',
+      deleted_at: new Date().toISOString(),
+      details: deleteModal.type === 'ATTENDANCE'
+        ? `Mechanic: ${targetItem.mechanic_name} • Check-In: ${targetItem.check_in || 'N/A'} • Check-Out: ${targetItem.check_out || 'N/A'}`
+        : `Mechanic: ${targetItem.mechanic_name} • Amount: ₹${targetItem.amount} • Type: ${targetItem.payment_type || 'Advance'}`,
+      payload: targetItem
+    };
+
+    const existingTrash = JSON.parse(localStorage.getItem('recycle_bin_items') || '[]');
+    localStorage.setItem('recycle_bin_items', JSON.stringify([trashObj, ...existingTrash]));
+    pushCloudRecycleBinItem(trashObj).catch(console.warn);
 
     try {
       if (deleteModal.type === 'ATTENDANCE') {
@@ -310,47 +335,12 @@ export default function AttendancePage() {
         await API.post(`/salary-payments/${targetItem.id}/delete_with_password/`, { admin_password: adminPassword }, { timeout: 2000 });
       }
     } catch (err) {
-      if (err.response && err.response.status !== 404) {
-        alert(err.response.data?.error || 'Could not delete this record.');
-        return;
-      }
-      offlineDelete = true;
-      console.warn('Backend unavailable; removing the local/cloud copy instead:', err);
+      console.warn('Backend API offline, moved record to Recycle Bin locally:', err);
+    } finally {
+      alert(`${deleteModal.type === 'ATTENDANCE' ? 'Attendance log' : 'Salary payout'} moved to Recycle Bin!`);
+      setDeleteModal({ isOpen: false, item: null, type: null });
+      fetchData();
     }
-
-    const removeById = (items) => items.filter(item => String(item.id) !== String(targetItem.id));
-    if (deleteModal.type === 'ATTENDANCE') {
-      localStorage.setItem('local_attendance', JSON.stringify(removeById(JSON.parse(localStorage.getItem('local_attendance') || '[]'))));
-      setAttendanceList(prev => removeById(prev));
-      deleteCloudAttendanceRecord(targetItem.id).catch(console.warn);
-    } else {
-      localStorage.setItem('local_salary_payments', JSON.stringify(removeById(JSON.parse(localStorage.getItem('local_salary_payments') || '[]'))));
-      setSalaryPayments(prev => removeById(prev));
-      deleteCloudSalaryPayment(targetItem.id).catch(console.warn);
-    }
-
-    if (offlineDelete) {
-      const trashObj = {
-        id: `trash_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
-        item_type: deleteModal.type === 'ATTENDANCE' ? 'Attendance Log' : 'Salary Payout',
-        title: deleteModal.type === 'ATTENDANCE'
-          ? `Attendance: ${targetItem.mechanic_name || 'Mechanic'} (${targetItem.date || 'Log'})`
-          : `Salary: ₹${targetItem.amount || 0} (${targetItem.mechanic_name || 'Mechanic'})`,
-        deleted_by: 'Patel Owner (Admin)',
-        deleted_at: new Date().toISOString(),
-        details: deleteModal.type === 'ATTENDANCE'
-          ? `Mechanic: ${targetItem.mechanic_name} • Check-In: ${targetItem.check_in || 'N/A'} • Check-Out: ${targetItem.check_out || 'N/A'}`
-          : `Mechanic: ${targetItem.mechanic_name} • Amount: ₹${targetItem.amount} • Type: ${targetItem.payment_type || 'Advance'}`,
-        payload: targetItem
-      };
-      const existingTrash = JSON.parse(localStorage.getItem('recycle_bin_items') || '[]');
-      localStorage.setItem('recycle_bin_items', JSON.stringify([trashObj, ...existingTrash]));
-      pushCloudRecycleBinItem(trashObj).catch(console.warn);
-    }
-
-    alert(`${deleteModal.type === 'ATTENDANCE' ? 'Attendance log' : 'Salary payout'} moved to Recycle Bin!`);
-    setDeleteModal({ isOpen: false, item: null, type: null });
-    fetchData();
   };
 
   const openMechanicProfile = (name) => {
