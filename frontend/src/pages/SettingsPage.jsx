@@ -134,7 +134,7 @@ export default function SettingsPage() {
     }
 
     const localAdmins = JSON.parse(localStorage.getItem('admin_profiles') || JSON.stringify(DEFAULT_ADMIN_PROFILES));
-    const cloudAdmins = await fetchCloudAdminProfiles();
+    const cloudAdmins = await fetchCloudAdminProfiles().catch(() => []);
 
     const map = new Map();
     [...backendAdmins, ...localAdmins, ...cloudAdmins, ...DEFAULT_ADMIN_PROFILES].forEach(adm => {
@@ -154,19 +154,19 @@ export default function SettingsPage() {
       }
     });
 
-    setAdminProfiles(Array.from(map.values()));
+    const finalProfiles = Array.from(map.values());
+    setAdminProfiles(finalProfiles);
+    localStorage.setItem('admin_profiles', JSON.stringify(finalProfiles));
   };
 
-  const fetchAuditLogs = async (m = auditMonth, y = auditYear) => {
-    let backendLogs = [];
+  const fetchAuditLogs = async (m, y) => {
+    const cloudLogs = await fetchCloudAuditLogs(m, y).catch(() => []);
+    const backendLogs = [];
     try {
-      const res = await API.get(`/admin-audit-logs/?month=${m}&year=${y}`, { timeout: 1200 });
-      backendLogs = res.data || [];
-    } catch (err) {
-      console.warn('Backend API offline for Audit Logs, fetching from local and cloud stores:', err);
-    }
+      const res = await API.get(`/logs/?month=${m}&year=${y}`);
+      if (Array.isArray(res.data)) backendLogs.push(...res.data);
+    } catch (e) {}
 
-    const cloudLogs = await fetchCloudAuditLogs();
     const map = new Map();
     [...backendLogs, ...cloudLogs].forEach(l => {
       if (l && typeof l === 'object') {
@@ -184,20 +184,20 @@ export default function SettingsPage() {
   useEffect(() => {
     if (garageInfo) {
       setFormData({
-        garage_name: garageInfo.garage_name || 'Patel Automobiles',
+        garage_name: garageInfo.garage_name || '',
         logo: garageInfo.logo || '/logo.png',
-        address: garageInfo.address || 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385',
-        phone: garageInfo.phone || '+91 81403 71414',
-        whatsapp_number: garageInfo.whatsapp_number || '+91 81403 71414',
-        email: garageInfo.email || 'contact@patelautomobiles.com',
-        timing_text: garageInfo.timing_text || 'Mon - Sat: 08:30 AM - 06:30 PM, Sun: 09:00 AM - 02:00 PM',
-        safety_message: garageInfo.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️',
-        mechanics_list: garageInfo.mechanics_list || 'Unassigned, Amitbhai Mechanic, Vishalbhai Mechanic, Manojbhai Mechanic',
-        default_labour_charge: garageInfo.default_labour_charge || 100.00,
+        address: garageInfo.address || '',
+        phone: garageInfo.phone || '',
+        whatsapp_number: garageInfo.whatsapp_number || '',
+        email: garageInfo.email || '',
+        timing_text: garageInfo.timing_text || '',
+        safety_message: garageInfo.safety_message || '',
+        mechanics_list: garageInfo.mechanics_list || '',
+        default_labour_charge: garageInfo.default_labour_charge || 0,
         default_min_stock: garageInfo.default_min_stock !== undefined ? garageInfo.default_min_stock : '',
-        upi_qr_code: garageInfo.upi_qr_code || '/upi_qr.jpg',
-        upi_id: garageInfo.upi_id || 'pritpatel9397@oksbi',
-        upi_payee_name: garageInfo.upi_payee_name || 'Prit Patel'
+        upi_qr_code: garageInfo.upi_qr_code || '',
+        upi_id: garageInfo.upi_id || '',
+        upi_payee_name: garageInfo.upi_payee_name || 'Patel Automobiles'
       });
     }
 
