@@ -4,7 +4,7 @@ import pymongo
 from pymongo import MongoClient
 
 ATLAS_URI = "mongodb+srv://rockpatel6732_db_user:FYwO0vlU8Vehe3DM@cluster0.zh8vtin.mongodb.net/patel_automobiles_db?retryWrites=true&w=majority&appName=Cluster0"
-CLOUD_BIN_URL = "https://jsonblob.com/api/jsonBlob/019fea29-8149-759d-ad03-0c9b267e07b2"
+CLOUD_BIN_URL = "https://jsonblob.com/api/jsonBlob/019fefc6-21be-77b8-ac69-adb834903ebd"
 
 def sync_cloud_to_mongodb():
     print("1. Fetching latest Master Store from Cloud Bin...")
