@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
 
 from .views import (
-    login_with_lockout, current_user, request_otp_reset, verify_otp_reset_password, verify_otp_only, public_create_booking, public_create_contact_message, public_garage_info, dashboard_stats,
+    login_with_lockout, current_user, request_otp_reset, verify_otp_reset_password, verify_otp_only, public_create_booking, public_create_contact_message, public_garage_info, public_master_store, dashboard_stats,
     BookingViewSet, WorkshopViewSet, InventoryViewSet, CustomerViewSet, ContactMessageViewSet,
     VehicleHistoryViewSet, BillingViewSet, KhataBookViewSet, AttendanceViewSet,
     ReportsViewSet, SettingsViewSet, RecycleBinViewSet, AdminProfileViewSet, AdminAuditLogViewSet,
@@ -39,6 +39,7 @@ urlpatterns = [
     path('public/bookings/', public_create_booking, name='public_booking'),
     path('public/contact/', public_create_contact_message, name='public_contact'),
     path('public/info/', public_garage_info, name='public_garage_info'),
+    path('public/master_store/', public_master_store, name='public_master_store'),
 
     # Dashboard & Custom Routers
     path('dashboard/stats/', dashboard_stats, name='dashboard_stats'),

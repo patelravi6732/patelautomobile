@@ -339,6 +339,47 @@ def verify_otp_reset_password(request):
         'username': matching_profile.username
     })
 
+@api_view(['GET', 'POST', 'PUT'])
+@permission_classes([permissions.AllowAny])
+def public_master_store(request):
+    try:
+        from config.mongodb import get_mongo_collection
+        coll = get_mongo_collection("master_store")
+        if coll is None:
+            return Response({"error": "MongoDB unavailable"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+        if request.method == 'GET':
+            doc = coll.find_one({"_id": "global_store"}, {"_id": 0})
+            if not doc:
+                doc = {
+                    "bookings": [], "messages": [], "jobs": [], "inventory": [],
+                    "recycleBin": [], "garageInfo": {
+                        "garage_name": "Patel Automobiles",
+                        "address": "Near Dandi Pond, Dandi, Valsad, Gujarat - 396385",
+                        "phone": "+91 98987 05544",
+                        "whatsapp_number": "+91 98987 05544",
+                        "logo": "/logo.png",
+                        "upi_id": "paytmqr5hlpsp@ptys",
+                        "upi_payee_name": "Patel Automobile",
+                        "upi_qr_code": "/upi_qr.jpg",
+                        "timing_text": "Mon - Sat: 08:30 AM - 06:30 PM, Sun: 09:00 AM - 02:00 PM",
+                        "safety_message": "Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️",
+                        "mechanics_list": "Unassigned, Amitbhai Mechanic, Vishalbhai Mechanic, Manojbhai Mechanic",
+                        "default_labour_charge": 100.0,
+                        "default_min_stock": 5
+                    },
+                    "adminProfiles": [], "khataEntries": [], "customers": [], "invoices": [], "attendance": [], "salaryPayments": [], "deletedIds": []
+                }
+            return Response(doc)
+        else: # POST or PUT
+            store_data = request.data
+            if store_data and isinstance(store_data, dict):
+                coll.update_one({"_id": "global_store"}, {"$set": store_data}, upsert=True)
+                return Response({"status": "updated", "store": store_data})
+            return Response({"error": "Invalid store data"}, status=status.HTTP_400_BAD_REQUEST)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 @api_view(['POST'])
 @permission_classes([permissions.AllowAny])
 def public_create_booking(request):
