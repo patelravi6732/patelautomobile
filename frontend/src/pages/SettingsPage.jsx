@@ -23,14 +23,16 @@ export default function SettingsPage() {
     phone: '+91 81403 71414',
     whatsapp_number: '+91 81403 71414',
     email: 'contact@patelautomobiles.com',
-    timing_text: 'Mon - Sat: 09:00 AM - 08:30 PM, Sun: 09:00 AM - 02:00 PM',
+    timing_text: 'Mon - Sat: 08:30 AM - 06:30 PM, Sun: 09:00 AM - 02:00 PM',
+    safety_message: 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️',
     mechanics_list: 'Unassigned, Amitbhai Mechanic, Vishalbhai Mechanic, Manojbhai Mechanic',
     default_labour_charge: 100.00,
-    default_min_stock: '',
+    default_min_stock: 5,
     upi_qr_code: '/upi_qr.jpg',
-    upi_id: 'pritpatel9397@oksbi',
-    upi_payee_name: 'Prit Patel'
+    upi_id: 'paytmqr5hlpsp@ptys',
+    upi_payee_name: 'Patel Automobiles'
   });
+  const [isFormDirty, setIsFormDirty] = useState(false);
 
   // Multi-Admin State
   const [adminProfiles, setAdminProfiles] = useState([]);
@@ -134,7 +136,7 @@ export default function SettingsPage() {
     }
 
     const localAdmins = JSON.parse(localStorage.getItem('admin_profiles') || JSON.stringify(DEFAULT_ADMIN_PROFILES));
-    const cloudAdmins = await fetchCloudAdminProfiles().catch(() => []);
+    const cloudAdmins = await fetchCloudAdminProfiles();
 
     const map = new Map();
     [...backendAdmins, ...localAdmins, ...cloudAdmins, ...DEFAULT_ADMIN_PROFILES].forEach(adm => {
@@ -143,7 +145,7 @@ export default function SettingsPage() {
         if (!map.has(key)) {
           map.set(key, {
             id: adm.id || key,
-            user_name: adm.user_name || adm.username,
+            user_name: (adm.user_name === 'Patel Owner (Admin)' || adm.user_name === 'Patel Owner') ? 'Patel Automobiles' : (adm.user_name || adm.username),
             username: adm.username || adm.user_name,
             phone: adm.phone || '+91 81403 71414',
             email: adm.email || 'contact@patelautomobiles.com',
@@ -154,19 +156,19 @@ export default function SettingsPage() {
       }
     });
 
-    const finalProfiles = Array.from(map.values());
-    setAdminProfiles(finalProfiles);
-    localStorage.setItem('admin_profiles', JSON.stringify(finalProfiles));
+    setAdminProfiles(Array.from(map.values()));
   };
 
-  const fetchAuditLogs = async (m, y) => {
-    const cloudLogs = await fetchCloudAuditLogs(m, y).catch(() => []);
-    const backendLogs = [];
+  const fetchAuditLogs = async (m = auditMonth, y = auditYear) => {
+    let backendLogs = [];
     try {
-      const res = await API.get(`/logs/?month=${m}&year=${y}`);
-      if (Array.isArray(res.data)) backendLogs.push(...res.data);
-    } catch (e) {}
+      const res = await API.get(`/admin-audit-logs/?month=${m}&year=${y}`, { timeout: 1200 });
+      backendLogs = res.data || [];
+    } catch (err) {
+      console.warn('Backend API offline for Audit Logs, fetching from local and cloud stores:', err);
+    }
 
+    const cloudLogs = await fetchCloudAuditLogs();
     const map = new Map();
     [...backendLogs, ...cloudLogs].forEach(l => {
       if (l && typeof l === 'object') {
@@ -182,28 +184,28 @@ export default function SettingsPage() {
   };
 
   useEffect(() => {
-    if (garageInfo) {
+    if (garageInfo && !isFormDirty) {
       setFormData({
-        garage_name: garageInfo.garage_name || '',
+        garage_name: garageInfo.garage_name || 'Patel Automobiles',
         logo: garageInfo.logo || '/logo.png',
-        address: garageInfo.address || '',
-        phone: garageInfo.phone || '',
-        whatsapp_number: garageInfo.whatsapp_number || '',
-        email: garageInfo.email || '',
-        timing_text: garageInfo.timing_text || '',
-        safety_message: garageInfo.safety_message || '',
-        mechanics_list: garageInfo.mechanics_list || '',
+        address: garageInfo.address || 'Near Dandi Pond, Dandi, Valsad, Gujarat - 396385',
+        phone: garageInfo.phone || '+91 81403 71414',
+        whatsapp_number: garageInfo.whatsapp_number || '+91 81403 71414',
+        email: garageInfo.email || 'contact@patelautomobiles.com',
+        timing_text: garageInfo.timing_text || 'Mon - Sat: 08:30 AM - 06:30 PM, Sun: 09:00 AM - 02:00 PM',
+        safety_message: garageInfo.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️',
+        mechanics_list: garageInfo.mechanics_list || 'Unassigned, Amitbhai Mechanic, Vishalbhai Mechanic, Manojbhai Mechanic',
         default_labour_charge: garageInfo.default_labour_charge || 100.00,
         default_min_stock: (garageInfo.default_min_stock !== undefined && garageInfo.default_min_stock !== '') ? garageInfo.default_min_stock : 5,
         upi_qr_code: garageInfo.upi_qr_code || '/upi_qr.jpg',
         upi_id: garageInfo.upi_id || 'paytmqr5hlpsp@ptys',
-        upi_payee_name: garageInfo.upi_payee_name || 'Patel Automobile'
+        upi_payee_name: garageInfo.upi_payee_name || 'Patel Automobiles'
       });
     }
 
     fetchAdminProfiles();
     fetchAuditLogs(auditMonth, auditYear);
-  }, [garageInfo, auditMonth, auditYear]);
+  }, [garageInfo, auditMonth, auditYear, isFormDirty]);
 
   // Open Add Admin Modal
   const handleOpenAddAdmin = () => {
