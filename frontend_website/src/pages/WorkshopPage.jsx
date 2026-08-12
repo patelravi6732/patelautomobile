@@ -274,19 +274,13 @@ export default function WorkshopPage() {
 
       const localDeleted = JSON.parse(localStorage.getItem('deleted_ids') || '[]');
       const allDeletedIds = Array.from(new Set([...localDeleted, ...deletedIds]));
-
       const isItemDeleted = (item) => {
         if (!item) return true;
         const itId = String(item.id || '').toLowerCase().trim();
-        const itName = String(item.part_name || item.name || '').toLowerCase().trim();
-        const itNorm = itName.replace(/[^a-z0-9]/g, '');
-
         return allDeletedIds.some(d => {
           if (!d) return false;
           const dStr = String(d).toLowerCase().trim();
-          const dNorm = dStr.replace(/[^a-z0-9]/g, '');
-          return (itId && dStr && (itId === dStr || itId.replace(/[^a-z0-9]/g, '') === dNorm)) ||
-                 (itName && dStr && (itName === dStr || itNorm === dNorm));
+          return itId && dStr && itId === dStr;
         });
       };
 
