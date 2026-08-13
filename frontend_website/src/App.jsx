@@ -25,6 +25,7 @@ import InventoryPage from './pages/InventoryPage';
 import CustomersPage from './pages/CustomersPage';
 import VehicleHistoryPage from './pages/VehicleHistoryPage';
 import BillingPage from './pages/BillingPage';
+import CounterSalePage from './pages/CounterSalePage';
 import KhataBookPage from './pages/KhataBookPage';
 import AttendancePage from './pages/AttendancePage';
 import ReportsPage from './pages/ReportsPage';
@@ -60,24 +61,12 @@ export default function App() {
     }
   }, []);
 
-  const isDedicatedAdminDomain = typeof window !== 'undefined' && (
-    window.location.hostname.includes('patelautomobilevk') || 
-    window.location.hostname.includes('admin')
-  );
-
   return (
     <AuthProvider>
       <ScrollToTop />
         <Routes>
-          
-          {/* PUBLIC WEBSITE ROUTES */}
-          <Route path="/" element={isDedicatedAdminDomain ? <Navigate to="/patel-admin-portal" replace /> : <PublicLayout />}>
-            <Route index element={isDedicatedAdminDomain ? <Navigate to="/patel-admin-portal" replace /> : <HomePage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="services" element={<ServicesPage />} />
-            <Route path="contact" element={<ContactPage />} />
-            <Route path="book-service" element={<BookServicePage />} />
-          </Route>
+          {/* DEFAULT ROOT REDIRECT TO ADMIN PORTAL */}
+          <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
 
           {/* SECRET ADMIN LOGIN SYSTEM ROUTES */}
           <Route path={SECRET_ADMIN_LOGIN_PATH} element={<LoginPage />} />
@@ -99,6 +88,7 @@ export default function App() {
             <Route path="new-service" element={<NewServicePage />} />
             <Route path="workshop" element={<WorkshopPage />} />
             <Route path="inventory" element={<InventoryPage />} />
+            <Route path="counter-sale" element={<CounterSalePage />} />
             <Route path="billing" element={<BillingPage />} />
             <Route path="khata-book" element={<KhataBookPage />} />
             <Route path="attendance" element={<AttendancePage />} />
@@ -122,6 +112,7 @@ export default function App() {
             <Route path="new-service" element={<NewServicePage />} />
             <Route path="workshop" element={<WorkshopPage />} />
             <Route path="inventory" element={<InventoryPage />} />
+            <Route path="counter-sale" element={<CounterSalePage />} />
             <Route path="billing" element={<BillingPage />} />
             <Route path="khata-book" element={<KhataBookPage />} />
             <Route path="attendance" element={<AttendancePage />} />
