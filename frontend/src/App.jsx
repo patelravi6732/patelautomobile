@@ -108,7 +108,7 @@ export default function App() {
             <Route path="new-service" element={<NewServicePage />} />
             <Route path="workshop" element={<WorkshopPage />} />
             <Route path="inventory" element={<InventoryPage />} />
-            <Route path="counter-sale" element={<ErrorBoundary><CounterSalePage /></ErrorBoundary>} />
+            <Route path="counter-sale" element={<CounterSalePage />} />
             <Route path="billing" element={<BillingPage />} />
             <Route path="khata-book" element={<KhataBookPage />} />
             <Route path="attendance" element={<AttendancePage />} />
@@ -132,7 +132,7 @@ export default function App() {
             <Route path="new-service" element={<NewServicePage />} />
             <Route path="workshop" element={<WorkshopPage />} />
             <Route path="inventory" element={<InventoryPage />} />
-            <Route path="counter-sale" element={<ErrorBoundary><CounterSalePage /></ErrorBoundary>} />
+            <Route path="counter-sale" element={<CounterSalePage />} />
             <Route path="billing" element={<BillingPage />} />
             <Route path="khata-book" element={<KhataBookPage />} />
             <Route path="attendance" element={<AttendancePage />} />
