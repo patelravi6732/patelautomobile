@@ -3,6 +3,7 @@ import { BookOpen, Send, CheckCircle2, IndianRupee, Phone, Bike, Search, Camera,
 import API from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { generateBillCanvasDataUrl, generateBillCanvasDataUrlAsync, generateBillCanvasBlob } from '../utils/billCardGenerator';
+import { shareKhataStatementToWhatsApp } from '../utils/whatsappPhotoSharer';
 
 import { fetchCloudKhataEntries, fetchCloudInvoices, fetchCloudJobs, pushCloudKhataEntry, pushCloudRecycleBinItem, markIdAsDeleted, deleteCloudKhataEntry, fetchCloudDeletedIds, atomicRecordPayment } from '../utils/cloudSync';
 import AdminPasswordModal from '../components/AdminPasswordModal';
@@ -592,11 +593,13 @@ export default function KhataBookPage() {
     if (!targetCust) return;
 
     const custName = targetCust.customer_name || 'Customer';
+    const vehNum = targetCust.vehicle_number || '';
+    const timeCode = Date.now().toString().slice(-4);
     setSharingPhoto(true);
 
     try {
       const blob = await generateBillCanvasBlob(targetCust, garageInfo);
-      const fileName = `Statement_${custName.replace(/\s+/g, '_')}_${targetCust.vehicle_number || ''}.png`;
+      const fileName = `Statement_${custName.replace(/\s+/g, '_')}_${vehNum || 'Khata'}_${timeCode}.png`;
 
       const imgUrl = URL.createObjectURL(blob);
       const link = document.createElement('a');
@@ -618,20 +621,17 @@ export default function KhataBookPage() {
     }
   };
 
-  const handleOpenWhatsAppChat = (customer) => {
-    const custPhone = customer.phone || '8140371414';
-    let phoneClean = ''.concat(custPhone || '').replace(/\D/g, '');
-    if (!phoneClean.startsWith('91') && phoneClean.length === 10) phoneClean = '91' + phoneClean;
+  const handleOpenWhatsAppChat = async (customer) => {
+    const targetCust = customer || statementCustomer;
+    if (!targetCust) return;
 
-    const contactPhone = garageInfo?.phone || '+91 81403 71414';
-    const garageName = garageInfo?.garage_name || 'Patel Automobiles';
-    const safetyMsg = garageInfo?.safety_message || 'Thank you for choosing us! Wish you a safe & smooth ride. 🛵⛑️';
-
-    let customMsg = `${safetyMsg}\n\n📞 Contact: ${contactPhone}\n— ${garageName}`;
-    const encodedMsg = encodeURIComponent(customMsg);
-    const targetUrl = `https://wa.me/${phoneClean}?text=${encodedMsg}`;
-
-    window.open(targetUrl, '_blank');
+    try {
+      showToast('📲 Preparing WhatsApp Share...', 'Generating Statement Photo Card & Message...');
+      await shareKhataStatementToWhatsApp(targetCust, garageInfo);
+    } catch (err) {
+      console.error('WhatsApp share error:', err);
+      showToast('Share Failed', 'Failed to open WhatsApp chat.', 'error');
+    }
   };
 
   return (
@@ -823,45 +823,45 @@ export default function KhataBookPage() {
                         📅 {d.visit_date || (d.last_visit ? new Date(d.last_visit).toLocaleString('en-IN') : 'N/A')}
                       </td>
                       <td className="p-4 sm:p-5 text-right">
-                      <div className="flex flex-wrap items-center justify-end gap-1.5 max-w-[280px] ml-auto">
-                        <button
-                          type="button"
-                          onClick={() => handleDownloadStatementPhoto(d)}
-                          disabled={sharingPhoto}
-                          className="h-8 px-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-sm transition-all hover:scale-105 cursor-pointer"
-                          title="Download Statement Photo Card"
-                        >
-                          <Download className="w-3.5 h-3.5" /> Download
-                        </button>
+                        <div className="flex flex-wrap items-center justify-end gap-1.5 max-w-[280px] ml-auto">
+                          <button
+                            type="button"
+                            onClick={() => handleDownloadStatementPhoto(d)}
+                            disabled={sharingPhoto}
+                            className="h-8 px-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-sm transition-all hover:scale-105 cursor-pointer"
+                            title="Download Statement Photo Card"
+                          >
+                            <Download className="w-3.5 h-3.5" /> Download
+                          </button>
 
-                        <button
-                          type="button"
-                          onClick={() => handleOpenWhatsAppChat(d)}
-                          className="h-8 px-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-sm transition-all hover:scale-105"
-                          title="Open WhatsApp Chat"
-                        >
-                          <Send className="w-3 h-3" /> WhatsApp
-                        </button>
+                          <button
+                            type="button"
+                            onClick={() => handleOpenWhatsAppChat(d)}
+                            className="h-8 px-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-sm transition-all hover:scale-105"
+                            title="Open WhatsApp Chat"
+                          >
+                            <Send className="w-3 h-3" /> WhatsApp
+                          </button>
 
-                        <button
-                          type="button"
-                          onClick={() => openPaymentModal(d)}
-                          className="h-8 px-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-sm transition-all hover:scale-105"
-                        >
-                          + Payment
-                        </button>
+                          <button
+                            type="button"
+                            onClick={() => openPaymentModal(d)}
+                            className="h-8 px-2.5 bg-amber-500 hover:bg-amber-600 text-white font-bold text-[11px] rounded-lg flex items-center justify-center gap-1 shadow-sm transition-all hover:scale-105"
+                          >
+                            + Payment
+                          </button>
 
-                        <button
-                          type="button"
-                          onClick={() => setDeleteModal({ isOpen: true, debtor: d })}
-                          className="h-8 px-2 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-[11px] rounded-lg border border-red-200 flex items-center justify-center gap-1 transition-all hover:scale-105"
-                          title="Delete Khata Account (Password Protected)"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                          <button
+                            type="button"
+                            onClick={() => setDeleteModal({ isOpen: true, debtor: d })}
+                            className="h-8 px-2 bg-red-50 hover:bg-red-100 text-red-600 font-bold text-[11px] rounded-lg border border-red-200 flex items-center justify-center gap-1 transition-all hover:scale-105"
+                            title="Delete Khata Account (Password Protected)"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>
@@ -1100,7 +1100,7 @@ export default function KhataBookPage() {
                         <span className="font-mono text-slate-900">₹{parseFloat(statementCustomer.gross_total || (parseFloat(statementCustomer.total_billed || 0) + parseFloat(statementCustomer.discount_amount || 0))).toFixed(2)}</span>
                       </div>
                       {parseFloat(statementCustomer.discount_amount || 0) > 0 && (
-                         <div className="flex justify-between text-amber-700">
+                        <div className="flex justify-between text-amber-700">
                           <span>Discount Given (-):</span>
                           <span className="font-mono text-amber-700 font-extrabold">- ₹{parseFloat(statementCustomer.discount_amount).toFixed(2)}</span>
                         </div>
