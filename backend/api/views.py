@@ -356,8 +356,8 @@ def public_master_store(request):
                     "recycleBin": [], "garageInfo": {
                         "garage_name": "Patel Automobiles",
                         "address": "Near Dandi Pond, Dandi, Valsad, Gujarat - 396385",
-                        "phone": "+91 98987 05544",
-                        "whatsapp_number": "+91 98987 05544",
+                        "phone": "+91 81403 71414",
+                        "whatsapp_number": "+91 81403 71414",
                         "logo": "/logo.png",
                         "upi_id": "paytmqr5hlpsp@ptys",
                         "upi_payee_name": "Patel Automobile",
