@@ -368,7 +368,8 @@ def public_master_store(request):
                         "default_labour_charge": 100.0,
                         "default_min_stock": 5
                     },
-                    "adminProfiles": [], "khataEntries": [], "customers": [], "invoices": [], "attendance": [], "salaryPayments": [], "deletedIds": []
+                    "adminProfiles": [], "khataEntries": [], "customers": [], "invoices": [], "attendance": [], "salaryPayments": [], "deletedIds": [],
+                    "counterSales": [], "counterKhata": []
                 }
             return Response(doc)
         else: # POST or PUT
