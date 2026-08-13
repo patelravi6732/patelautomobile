@@ -79,8 +79,14 @@ export default function App() {
     <AuthProvider>
       <ScrollToTop />
         <Routes>
-          {/* DEFAULT ROOT REDIRECT TO ADMIN PORTAL */}
-          <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+          {/* PUBLIC WEBSITE ROUTES (No Login Required) */}
+          <Route path="/" element={<PublicLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="services" element={<ServicesPage />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="book" element={<BookServicePage />} />
+          </Route>
 
           {/* SECRET ADMIN LOGIN SYSTEM ROUTES */}
           <Route path={SECRET_ADMIN_LOGIN_PATH} element={<LoginPage />} />
