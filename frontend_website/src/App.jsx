@@ -86,6 +86,7 @@ export default function App() {
             <Route path="services" element={<ServicesPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="book" element={<BookServicePage />} />
+            <Route path="book-service" element={<BookServicePage />} />
           </Route>
 
           {/* SECRET ADMIN LOGIN SYSTEM ROUTES */}
