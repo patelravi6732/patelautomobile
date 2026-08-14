@@ -86,7 +86,7 @@ export default function BookServicePage() {
 
     // Save locally immediately
     const existing = JSON.parse(localStorage.getItem('local_bookings') || '[]');
-    const isDup = existing.some(b => b.id === newBookingObj.id || (b.vehicle_number === newBookingObj.vehicle_number && b.preferred_date === newBookingObj.preferred_date));
+    const isDup = existing.some(b => b.id === newBookingObj.id);
     if (!isDup) {
       localStorage.setItem('local_bookings', JSON.stringify([newBookingObj, ...existing]));
     }
